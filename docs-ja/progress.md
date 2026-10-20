@@ -40,3 +40,8 @@
 - advanced/accesstransformers.md
 - advanced/extensibleenums.md
 - worldgen/biomemodifier.md
+- resources/index.md
+- resources/client/i18n.md
+- resources/client/textures.md
+- resources/client/particles.md
+- resources/client/sounds.md

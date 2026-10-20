@@ -229,3 +229,16 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | carver ( legacy carver ) | カーバー( レガシーカーバー ) |
 | decoration step | 装飾ステップ |
 | phase | フェーズ |
+| assets / data | アセット / データ |
+| resource pack / data pack | リソースパック / データパック( Datapack ) |
+| data generator / datagen | データジェネレーター / データ生成 |
+| command line argument | コマンドライン引数 |
+| component ( text ) | コンポーネント( コード上は `Component` ) |
+| style / text formatting | スタイル / テキストの書式 |
+| language file / translation key | 言語ファイル / 翻訳キー |
+| animated texture | アニメーションテクスチャ |
+| particle / particle description | パーティクル / パーティクルの記述 |
+| particle provider | パーティクルプロバイダ |
+| sound event / sound category / sound definition | サウンドイベント / サウンドカテゴリ / サウンド定義 |
+| attenuation | 減衰 |
+| merge | マージ |
