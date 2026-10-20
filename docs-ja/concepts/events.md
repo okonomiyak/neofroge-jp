@@ -118,10 +118,10 @@ public class EventHandler {
 
 ### 階層 {#hierarchy}
 
-継承の利点を活かすため、一部の Event は `Event` を直接継承せず、そのサブクラスのいずれかを継承しています。たとえば `BlockEvent`( ブロック関連の Event のためにブロックのコンテキストを持つ )や `EntityEvent`( 同様にエンティティのコンテキストを持つ )、そのサブクラスである `LivingEvent`( `LivingEntity` 固有のコンテキスト用 )や `PlayerEvent`( `Player` 固有のコンテキスト用 )などです。こうしたコンテキストを提供する親 Event は `abstract` であり、リッスンすることはできません。
+継承の利点を活かすため、一部の Event は `Event` を直接継承せず、そのサブクラスのいずれかを継承しています。たとえば `BlockEvent`( ブロック関連の Event のためにブロックのコンテキストを持つ )や `EntityEvent`( 同様にエンティティのコンテキストを持つ )、そのサブクラスである `LivingEvent`( `LivingEntity` 固有のコンテキスト用 )や `PlayerEvent`( `Player` 固有のコンテキスト用 )などです。こうしたコンテキストを提供する親 Event は `abstract` であり、listen することはできません。
 
 :::danger
-`abstract` な Event をリッスンするとゲームがクラッシュします。それが望ましい場面は決してないためです。必ず、そのサブ Event のいずれかをリッスンしてください。
+`abstract` な Event を listen するとゲームがクラッシュします。それが望ましい場面は決してないためです。必ず、そのサブ Event のいずれかを listen してください。
 :::
 
 ### キャンセル可能な Event {#cancellable-events}

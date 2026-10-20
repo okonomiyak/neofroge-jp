@@ -72,7 +72,7 @@ Mojang は通常、エンティティを除くすべてのクラスで同様の�
 
 ## 方法は一つに絞る {#choose-one-method-from-many}
 
-オブジェクトの登録や Event のリッスンなど、ある処理を行う方法はたくさんあります。一般に、ある処理には一つの方法を使い、一貫させることをおすすめします。読みやすくなるうえ、予期しない相互作用や重複( 例: Event リスナーが 2 回実行される )を避けられます。
+オブジェクトの登録や Event の listen など、ある処理を行う方法はたくさんあります。一般に、ある処理には一つの方法を使い、一貫させることをおすすめします。読みやすくなるうえ、予期しない相互作用や重複( 例: Event リスナーが 2 回実行される )を避けられます。
 
 [group]: index.md#the-group-id
 [naming]: https://docs.oracle.com/javase/tutorial/java/package/namingpkgs.html

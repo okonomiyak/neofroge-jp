@@ -5,6 +5,7 @@
 ## 表記ルール
 
 - 本文の括弧は、内側にスペースを入れる。例: `( あ )`。コードブロック、インラインコード、リンク先は対象外。
+- listen は英語のまま使う。例: `Event を listen する`。
 - リンク直後の括弧は、リンク記法と誤認されないよう全角括弧 `（ ）` にする。
 
 ## 英語のまま残す用語
@@ -77,7 +78,7 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | event handler | Event ハンドラ |
 | fire ( an event ) | ( Event を )発火する |
 | post ( an event on a bus ) | ( バスに )投稿する |
-| subscribe / listen to | 登録する / リッスンする |
+| subscribe / listen to | 登録する / listen する |
 | game bus / mod bus / main bus | ゲームバス / Mod バス / メインバス |
 | mod event bus | Mod の EventBus |
 | lifecycle event | ライフサイクル Event |

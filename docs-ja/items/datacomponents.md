@@ -278,7 +278,7 @@ public static final Item COMPONENT_EXAMPLE = REGISTRAR.register("component",
 );
 ```
 
-バニラや他の Mod の既存の Item にデータコンポーネントを追加したい場合は、[**Mod の EventBus**][modbus] で `ModifyDefaultComponentsEvent` をリッスンしてください。この Event には `modify` と `modifyMatching` のメソッドがあり、対象の Item の `DataComponentPatch.Builder` を変更できます。ビルダーでは、コンポーネントを設定( `#set` )したり、既存のコンポーネントを削除( `#remove` )したりできます。
+バニラや他の Mod の既存の Item にデータコンポーネントを追加したい場合は、[**Mod の EventBus**][modbus] で `ModifyDefaultComponentsEvent` を listen してください。この Event には `modify` と `modifyMatching` のメソッドがあり、対象の Item の `DataComponentPatch.Builder` を変更できます。ビルダーでは、コンポーネントを設定( `#set` )したり、既存のコンポーネントを削除( `#remove` )したりできます。
 
 ```java
 @SubscribeEvent // on the mod event bus
