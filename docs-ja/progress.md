@@ -26,3 +26,8 @@
 - gui/screens.md
 - inventories/container.md
 - inventories/capabilities.md
+- networking/index.md
+- networking/payload.md
+- networking/streamcodecs.md
+- networking/configuration-tasks.md
+- networking/entities.md

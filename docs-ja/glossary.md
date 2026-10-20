@@ -184,3 +184,18 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | capability provider | capability プロバイダ |
 | invalidate / invalidation | 無効化する / 無効化 |
 | automation-accessible | 自動化でアクセスできる |
+| payload | ペイロード |
+| registrar | レジストラ |
+| play phase / configuration phase | プレイフェーズ / コンフィギュレーションフェーズ |
+| configuration task | コンフィギュレーションタスク |
+| acknowledge ( a task ) | 完了を通知する |
+| main thread / network thread | メインスレッド / ネットワークスレッド |
+| bundle packet | バンドルパケット |
+| data parameter | データパラメータ |
+| stream codec | ストリームコーデック |
+| buffer | バッファ |
+| trusted tag | 信頼済みタグ |
+| member encoder | メンバーエンコーダ |
+| composite | 複合 |
+| id mapper | ID マッパー |
+| holder / holder set | ホルダー / ホルダーセット |
