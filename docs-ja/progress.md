@@ -18,3 +18,16 @@
 - items/tools.md
 - items/mobeffects.md
 - items/datacomponents.md
+- datastorage/nbt.md
+- datastorage/codecs.md
+- datastorage/attachments.md
+- datastorage/saveddata.md
+- gui/menus.md
+- gui/screens.md
+- inventories/container.md
+- inventories/capabilities.md
+- networking/index.md
+- networking/payload.md
+- networking/streamcodecs.md
+- networking/configuration-tasks.md
+- networking/entities.md

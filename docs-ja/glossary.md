@@ -145,3 +145,57 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | amplifier | 増幅値 |
 | potion item | ポーション系 Item |
 | brewing | 醸造 |
+| compound tag | compound タグ |
+| saved data | SavedData( 見出し )/ SD |
+| attachment type | アタッチメントタイプ |
+| serializer | シリアライザ |
+| persist | 永続化する |
+| codec | Codec |
+| encode / decode | エンコード / デコード |
+| lookup provider | ルックアッププロバイダ |
+| record ( codec ) | レコード( Codec ) |
+| transformer ( codec ) | 変換 |
+| range codec | 範囲 Codec |
+| string resolver | 文字列リゾルバ |
+| lazy initialized | 遅延初期化 |
+| dispatch ( codec ) | ディスパッチ |
+| primitive | プリミティブ |
+| overworld / nether / the end | オーバーワールド / ネザー / ジ・エンド |
+| menu / menu type | メニュー / メニューのタイプ( コード上は `MenuType` ) |
+| data holder | データホルダー |
+| container id | コンテナ ID |
+| slot / data slot | スロット / データスロット |
+| hotbar | ホットバー |
+| quick move ( shift-click ) | クイック移動( Shift クリック ) |
+| screen | 画面 |
+| container screen | コンテナ画面 |
+| widget | ウィジェット |
+| relative coordinates | 相対座標 |
+| colored rectangle | 色付きの矩形 |
+| blit / blit offset | ブリット / ブリットオフセット |
+| sprite / texture atlas | スプライト / テクスチャアトラス |
+| tooltip | ツールチップ |
+| narration | ナレーション |
+| focus | フォーカス |
+| teardown | 後片付け |
+| container | コンテナ( コード上は `Container` ) |
+| equipment slot | 装備スロット |
+| capability | capability( 英語のまま ) |
+| capability provider | capability プロバイダ |
+| invalidate / invalidation | 無効化する / 無効化 |
+| automation-accessible | 自動化でアクセスできる |
+| payload | ペイロード |
+| registrar | レジストラ |
+| play phase / configuration phase | プレイフェーズ / コンフィギュレーションフェーズ |
+| configuration task | コンフィギュレーションタスク |
+| acknowledge ( a task ) | 完了を通知する |
+| main thread / network thread | メインスレッド / ネットワークスレッド |
+| bundle packet | バンドルパケット |
+| data parameter | データパラメータ |
+| stream codec | ストリームコーデック |
+| buffer | バッファ |
+| trusted tag | 信頼済みタグ |
+| member encoder | メンバーエンコーダ |
+| composite | 複合 |
+| id mapper | ID マッパー |
+| holder / holder set | ホルダー / ホルダーセット |
