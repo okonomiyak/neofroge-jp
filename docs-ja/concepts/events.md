@@ -38,7 +38,7 @@ public class YourMod {
 
 ### `@SubscribeEvent`
 
-別の方法として、Event ハンドラのメソッドを作って `@SubscribeEvent` アノテーションを付ける、アノテーション駆動の方法もあります。そのうえで、そのメソッドを含むクラスのインスタンスを EventBus に渡すと、そのインスタンスにある `@SubscribeEvent` 付きの Event ハンドラがすべて登録されます。
+別の方法として、アノテーション駆動という方法もあります。Event ハンドラのメソッドを作り、`@SubscribeEvent` アノテーションを付けます。そのうえで、そのメソッドを含むクラスのインスタンスを EventBus に渡すと、そのインスタンスにある `@SubscribeEvent` 付きの Event ハンドラがすべて登録されます。
 
 ```java
 public class EventHandler {
