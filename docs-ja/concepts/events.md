@@ -8,11 +8,11 @@ import TabItem from '@theme/TabItem';
 
 NeoForge の主な機能の一つが Event システムです。Event は、ゲーム内で起きるさまざまな出来事に対して発火されます。たとえば、プレイヤーが右クリックしたとき、プレイヤーや他のエンティティがジャンプしたとき、ブロックが描画されるとき、ゲームが読み込まれたときなどの Event があります。Mod 開発者はこれらの Event それぞれに Event ハンドラを登録し、その中で目的の処理を行えます。
 
-Event は、それぞれ対応する EventBus 上で発火されます。最も重要なバスは `NeoForge.EVENT_BUS` で、**ゲーム**バスとも呼ばれます。それとは別に、起動時には読み込まれた Mod ごとに Mod バスが作られ、Mod のコンストラクタに渡されます。Mod バスの Event の多くは並列に発火されるため(常に同じスレッドで実行されるメインバスの Event とは異なります)、起動速度が大幅に向上します。詳しくは[後述][modbus]を参照してください。
+Event は、それぞれ対応する EventBus 上で発火されます。最も重要なバスは `NeoForge.EVENT_BUS` で、**ゲーム**バスとも呼ばれます。それとは別に、起動時には読み込まれた Mod ごとに Mod バスが作られ、Mod のコンストラクタに渡されます。Mod バスの Event の多くは並列に発火されるため( 常に同じスレッドで実行されるメインバスの Event とは異なります )、起動速度が大幅に向上します。詳しくは[後述][modbus]を参照してください。
 
 ## Event ハンドラの登録 {#registering-an-event-handler}
 
-Event ハンドラを登録する方法はいくつかあります。どの方法にも共通するのは、すべての Event ハンドラが、Event の引数を 1 つだけ受け取り、結果を返さない(つまり戻り値の型が `void` の)メソッドであることです。
+Event ハンドラを登録する方法はいくつかあります。どの方法にも共通するのは、すべての Event ハンドラが、Event の引数を 1 つだけ受け取り、結果を返さない( つまり戻り値の型が `void` の )メソッドであることです。
 
 ### `IEventBus#addListener`
 
@@ -95,7 +95,7 @@ public class YourMod {
 </TabItem>
 </Tabs>
 
-必須ではありませんが、デバッグ(特に Mod 同士の競合が起きたとき)をしやすくするため、アノテーションに `modid` パラメータを指定することを強くおすすめします。
+必須ではありませんが、デバッグ( 特に Mod 同士の競合が起きたとき )をしやすくするため、アノテーションに `modid` パラメータを指定することを強くおすすめします。
 
 ```java
 @EventBusSubscriber(modid = "yourmodid")
@@ -118,7 +118,7 @@ public class EventHandler {
 
 ### 階層 {#hierarchy}
 
-継承の利点を活かすため、一部の Event は `Event` を直接継承せず、そのサブクラスのいずれかを継承しています。たとえば `BlockEvent`(ブロック関連の Event のためにブロックのコンテキストを持つ)や `EntityEvent`(同様にエンティティのコンテキストを持つ)、そのサブクラスである `LivingEvent`(`LivingEntity` 固有のコンテキスト用)や `PlayerEvent`(`Player` 固有のコンテキスト用)などです。こうしたコンテキストを提供する親 Event は `abstract` であり、リッスンすることはできません。
+継承の利点を活かすため、一部の Event は `Event` を直接継承せず、そのサブクラスのいずれかを継承しています。たとえば `BlockEvent`( ブロック関連の Event のためにブロックのコンテキストを持つ )や `EntityEvent`( 同様にエンティティのコンテキストを持つ )、そのサブクラスである `LivingEvent`( `LivingEntity` 固有のコンテキスト用 )や `PlayerEvent`( `Player` 固有のコンテキスト用 )などです。こうしたコンテキストを提供する親 Event は `abstract` であり、リッスンすることはできません。
 
 :::danger
 `abstract` な Event をリッスンするとゲームがクラッシュします。それが望ましい場面は決してないためです。必ず、そのサブ Event のいずれかをリッスンしてください。
@@ -128,11 +128,11 @@ public class EventHandler {
 
 一部の Event は `ICancellableEvent` インターフェースを実装しています。こうした Event は `#setCanceled(boolean canceled)` でキャンセルでき、キャンセル状態は `#isCanceled()` で確認できます。Event がキャンセルされると、その Event の他の Event ハンドラは実行されず、「キャンセル」に対応する何らかの動作が有効になります。たとえば、`LivingJumpEvent` をキャンセルするとジャンプが阻止されます。
 
-Event ハンドラは、キャンセル済みの Event も明示的に受け取るよう選択できます。これには、`IEventBus#addListener`(Event ハンドラの登録方法によっては `@SubscribeEvent`)の真偽値パラメータ `receiveCanceled` を true に設定します。
+Event ハンドラは、キャンセル済みの Event も明示的に受け取るよう選択できます。これには、`IEventBus#addListener`( Event ハンドラの登録方法によっては `@SubscribeEvent` )の真偽値パラメータ `receiveCanceled` を true に設定します。
 
 ### TriState と Result {#tristates-and-results}
 
-一部の Event には、`TriState` で表される、または Event クラスに直接定義された `Result` enum で表される、3 種類の戻り状態があります。一般に、戻り状態によって、Event が扱う動作をキャンセルする(`TriState#FALSE`)、動作を強制的に実行する(`TriState#TRUE`)、またはバニラのデフォルトの動作を実行する(`TriState#DEFAULT`)ことができます。
+一部の Event には、`TriState` で表される、または Event クラスに直接定義された `Result` enum で表される、3 種類の戻り状態があります。一般に、戻り状態によって、Event が扱う動作をキャンセルする( `TriState#FALSE` )、動作を強制的に実行する( `TriState#TRUE` )、またはバニラのデフォルトの動作を実行する( `TriState#DEFAULT` )ことができます。
 
 3 種類の戻り状態を持つ Event には、望む結果を設定するための何らかの `set*` メソッドがあります。
 
@@ -154,7 +154,7 @@ public static void mobDespawn(MobDespawnEvent event) {
 
 ### 優先度 {#priority}
 
-Event ハンドラには、任意で優先度を割り当てられます。`EventPriority` enum には、`HIGHEST`、`HIGH`、`NORMAL`(デフォルト)、`LOW`、`LOWEST` の 5 つの値があります。Event ハンドラは優先度の高い順に実行されます。優先度が同じ場合、メインバスでは登録順(おおむね Mod の読み込み順に対応します)に、Mod バスでは Mod の読み込み順どおりに発火されます(後述)。
+Event ハンドラには、任意で優先度を割り当てられます。`EventPriority` enum には、`HIGHEST`、`HIGH`、`NORMAL`( デフォルト )、`LOW`、`LOWEST` の 5 つの値があります。Event ハンドラは優先度の高い順に実行されます。優先度が同じ場合、メインバスでは登録順( おおむね Mod の読み込み順に対応します )に、Mod バスでは Mod の読み込み順どおりに発火されます( 後述 )。
 
 優先度は、Event ハンドラの登録方法に応じて、`IEventBus#addListener` または `@SubscribeEvent` の `priority` パラメータで指定します。並列に発火される Event では、優先度は無視される点に注意してください。
 
@@ -195,14 +195,14 @@ Mod バスの Event のほとんどは、ライフサイクル Event と呼ば�
 - Registry の Event が発火されます。これには [`NewRegistryEvent`][newregistry]、[`DataPackRegistryEvent.NewRegistry`][newdatapackregistry]、そして Registry ごとの [`RegisterEvent`][registerevent] が含まれます。
 - `FMLCommonSetupEvent` が発火されます。ここでさまざまな雑多なセットアップが行われます。
 - [Side][side] 別のセットアップが発火されます。物理クライアントでは `FMLClientSetupEvent`、物理サーバーでは `FMLDedicatedServerSetupEvent` です。
-- `InterModComms` が処理されます(後述)。
+- `InterModComms` が処理されます( 後述 )。
 - `FMLLoadCompleteEvent` が発火されます。
 
 #### `InterModComms`
 
 `InterModComms` は、互換機能のために Mod 開発者が他の Mod にメッセージを送れるシステムです。このクラスは Mod 宛てのメッセージを保持し、すべてのメソッドはスレッドセーフに呼び出せます。このシステムは主に `InterModEnqueueEvent` と `InterModProcessEvent` の 2 つの Event によって動きます。
 
-`InterModEnqueueEvent` の間に、`InterModComms#sendTo` を使って他の Mod にメッセージを送れます。これらのメソッドは、メッセージを送る先の Mod ID、メッセージのデータに関連付けるキー(異なるメッセージを区別するため)、そしてメッセージのデータを保持する `Supplier` を受け取ります。送信者を任意で指定することもできます。
+`InterModEnqueueEvent` の間に、`InterModComms#sendTo` を使って他の Mod にメッセージを送れます。これらのメソッドは、メッセージを送る先の Mod ID、メッセージのデータに関連付けるキー( 異なるメッセージを区別するため )、そしてメッセージのデータを保持する `Supplier` を受け取ります。送信者を任意で指定することもできます。
 
 そして `InterModProcessEvent` の間に、`InterModComms#getMessages` を使って、受け取ったすべてのメッセージを `IMCMessage` オブジェクトのストリームとして取得できます。これには、データの送信者、データの宛先、データのキー、実際のデータの Supplier が含まれます。
 

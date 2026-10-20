@@ -1,6 +1,6 @@
 # 進捗
 
-翻訳が完了したファイル(`docs-en/` からの相対パス)です。
+翻訳が完了したファイル( `docs-en/` からの相対パス )です。
 
 - gettingstarted/index.md
 - gettingstarted/modfiles.md

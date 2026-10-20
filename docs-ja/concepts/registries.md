@@ -3,9 +3,9 @@ sidebar_position: 1
 ---
 # Registry {#registries}
 
-登録とは、Mod のオブジェクト([Item][item]、[Block][block]、エンティティなど)をゲームに認識させる処理です。登録は重要です。登録しなければ、ゲームはそれらのオブジェクトをまったく認識できず、説明のつかない挙動やクラッシュの原因になります。
+登録とは、Mod のオブジェクト( [Item][item]、[Block][block]、エンティティなど )をゲームに認識させる処理です。登録は重要です。登録しなければ、ゲームはそれらのオブジェクトをまったく認識できず、説明のつかない挙動やクラッシュの原因になります。
 
-Registry とは、簡単に言えば、Registry 名(後述)と登録されたオブジェクト(Registry エントリと呼ばれることが多い)を対応付けるマップのラッパーです。Registry 名は同じ Registry 内で一意である必要がありますが、同じ Registry 名が複数の Registry に存在してもかまいません。最もよくある例は、(`BLOCKS` Registry にある)ブロックが、同じ Registry 名を持つアイテムの形態を(`ITEMS` Registry に)持つ場合です。
+Registry とは、簡単に言えば、Registry 名( 後述 )と登録されたオブジェクト( Registry エントリと呼ばれることが多い )を対応付けるマップのラッパーです。Registry 名は同じ Registry 内で一意である必要がありますが、同じ Registry 名が複数の Registry に存在してもかまいません。最もよくある例は、( `BLOCKS` Registry にある )ブロックが、同じ Registry 名を持つアイテムの形態を( `ITEMS` Registry に )持つ場合です。
 
 登録されたオブジェクトはすべて、Registry 名と呼ばれる一意の名前を持ちます。この名前は [`ResourceLocation`][resloc] で表されます。たとえば、土ブロックの Registry 名は `minecraft:dirt`、ゾンビの Registry 名は `minecraft:zombie` です。Mod のオブジェクトはもちろん `minecraft` 名前空間を使わず、代わりにその Mod の ID を使います。
 
@@ -13,7 +13,7 @@ Registry とは、簡単に言えば、Registry 名(後述)と登録されたオ
 
 NeoForge の Registry システムにおける設計判断の一部を理解するために、まずは Minecraft がこれをどう行っているかを見てみましょう。他のほとんどの Registry も同じように動作するので、ここでは Block の Registry を例にします。
 
-Registry は一般に[シングルトン][singleton]を登録します。(訳注: シングルトンとは、ゲーム全体でインスタンスが 1 つしか存在しないオブジェクトのことです)つまり、すべての Registry エントリはちょうど 1 つだけ存在します。たとえば、ゲーム中で目にする石ブロックはすべて、実際には同じ石ブロックが何度も表示されているものです。石ブロックが必要な場合は、登録された Block のインスタンスを参照して取得できます。
+Registry は一般に[シングルトン][singleton]を登録します。( 訳注: シングルトンとは、ゲーム全体でインスタンスが 1 つしか存在しないオブジェクトのことです )つまり、すべての Registry エントリはちょうど 1 つだけ存在します。たとえば、ゲーム中で目にする石ブロックはすべて、実際には同じ石ブロックが何度も表示されているものです。石ブロックが必要な場合は、登録された Block のインスタンスを参照して取得できます。
 
 Minecraft はすべてのブロックを `Blocks` クラスで登録します。`register` メソッドを通じて `Registry#register()` が呼ばれ、その第 1 引数には `BuiltInRegistries.BLOCK` にある Block の Registry が渡されます。すべてのブロックが登録されると、Minecraft はブロックの一覧に基づいてさまざまなチェックを行います。たとえば、すべてのブロックにモデルが読み込まれていることを確認するセルフチェックです。
 
@@ -38,7 +38,7 @@ public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(
 );
 ```
 
-次に、Registry エントリを static final フィールドとして追加します(`new Block()` に渡す引数については [Block の記事][block]を参照してください)。
+次に、Registry エントリを static final フィールドとして追加します( `new Block()` に渡す引数については [Block の記事][block]を参照してください )。
 
 ```java
 public static final DeferredHolder<Block, Block> EXAMPLE_BLOCK = BLOCKS.register(
@@ -47,7 +47,7 @@ public static final DeferredHolder<Block, Block> EXAMPLE_BLOCK = BLOCKS.register
 );
 ```
 
-`DeferredHolder<R, T extends R>` クラスが、このオブジェクトを保持します。型パラメータ `R` は登録先の Registry の型(この例では `Block`)です。型パラメータ `T` は Supplier の型です。この例では `Block` を直接登録しているので、2 つ目のパラメータに `Block` を指定しています。`Block` のサブクラス、たとえば `SlabBlock` のオブジェクトを登録する場合は、ここに `SlabBlock` を指定します。
+`DeferredHolder<R, T extends R>` クラスが、このオブジェクトを保持します。型パラメータ `R` は登録先の Registry の型( この例では `Block` )です。型パラメータ `T` は Supplier の型です。この例では `Block` を直接登録しているので、2 つ目のパラメータに `Block` を指定しています。`Block` のサブクラス、たとえば `SlabBlock` のオブジェクトを登録する場合は、ここに `SlabBlock` を指定します。
 
 `DeferredHolder<R, T extends R>` は `Supplier<T>` のサブクラスです。登録したオブジェクトが必要になったときは、`DeferredHolder#get()` を呼び出して取得できます。`DeferredHolder` が `Supplier` を継承しているので、フィールドの型として `Supplier` を使うこともできます。その場合、上のコードブロックは次のようになります。
 
@@ -77,7 +77,7 @@ public ExampleMod(IEventBus modBus) {
 
 ### `RegisterEvent`
 
-`RegisterEvent` は、オブジェクトを登録する 2 つ目の方法です。この [Event][event] は、Mod のコンストラクタの後(`DeferredRegister` が内部の Event ハンドラを登録するのはコンストラクタ内だからです)、かつコンフィグの読み込み前に、Registry ごとに発火されます。`RegisterEvent` は Mod の EventBus で発火されます。
+`RegisterEvent` は、オブジェクトを登録する 2 つ目の方法です。この [Event][event] は、Mod のコンストラクタの後( `DeferredRegister` が内部の Event ハンドラを登録するのはコンストラクタ内だからです )、かつコンフィグの読み込み前に、Registry ごとに発火されます。`RegisterEvent` は Mod の EventBus で発火されます。
 
 ```java
 @SubscribeEvent // on the mod event bus
@@ -99,7 +99,7 @@ public static void register(RegisterEvent event) {
 
 ## Registry の問い合わせ {#querying-registries}
 
-ある ID から登録済みのオブジェクトを取得したい場面や、ある登録済みオブジェクトの ID を取得したい場面があるでしょう。Registry は基本的に ID(`ResourceLocation`)と個別のオブジェクトのマップ、つまり逆引きもできるマップなので、どちらの操作も可能です。
+ある ID から登録済みのオブジェクトを取得したい場面や、ある登録済みオブジェクトの ID を取得したい場面があるでしょう。Registry は基本的に ID( `ResourceLocation` )と個別のオブジェクトのマップ、つまり逆引きもできるマップなので、どちらの操作も可能です。
 
 ```java
 BuiltInRegistries.BLOCK.get(ResourceLocation.fromNamespaceAndPath("minecraft", "dirt")); // returns the dirt block
@@ -119,7 +119,7 @@ BuiltInRegistries.BLOCK.containsKey(ResourceLocation.fromNamespaceAndPath("creat
 
 最後の例が示すように、これはどの Mod ID でも使えるので、他の Mod の特定のアイテムが存在するかを確認するのに最適な方法です。
 
-最後に、Registry 内のすべてのエントリを、キーまたはエントリ(エントリには Java の `Map.Entry` 型を使います)で反復処理することもできます。
+最後に、Registry 内のすべてのエントリを、キーまたはエントリ( エントリには Java の `Map.Entry` 型を使います )で反復処理することもできます。
 
 ```java
 for (ResourceLocation id : BuiltInRegistries.BLOCK.keySet()) {
@@ -186,18 +186,18 @@ public static void register(RegisterEvent event) {
 
 ## Datapack Registry {#datapack-registries}
 
-Datapack Registry(動的 Registry、または主な用途から worldgen Registry とも呼ばれます)は特殊な Registry で、ゲームの起動時ではなくワールドの読み込み時に、[Datapack][datapack] の JSON からデータを読み込みます(名前の由来です)。デフォルトの Datapack Registry には、いくつかの例外を除き、worldgen の Registry のほとんどが含まれます。
+Datapack Registry( 動的 Registry、または主な用途から worldgen Registry とも呼ばれます )は特殊な Registry で、ゲームの起動時ではなくワールドの読み込み時に、[Datapack][datapack] の JSON からデータを読み込みます( 名前の由来です )。デフォルトの Datapack Registry には、いくつかの例外を除き、worldgen の Registry のほとんどが含まれます。
 
-Datapack Registry では、その中身を JSON ファイルで指定できます。つまり、コードは必要ありません(JSON ファイルを自分で書きたくない場合の[データ生成][datagen]は別です)。すべての Datapack Registry には、シリアライズに使われる [`Codec`][codec] が関連付けられており、各 Registry の ID によって Datapack 内のパスが決まります。
+Datapack Registry では、その中身を JSON ファイルで指定できます。つまり、コードは必要ありません( JSON ファイルを自分で書きたくない場合の[データ生成][datagen]は別です )。すべての Datapack Registry には、シリアライズに使われる [`Codec`][codec] が関連付けられており、各 Registry の ID によって Datapack 内のパスが決まります。
 
-- Minecraft の Datapack Registry は `data/yourmodid/registrypath` という形式を使います(例: `data/yourmodid/worldgen/biome`。`worldgen/biome` が Registry のパスです)。
-- その他すべての Datapack Registry(NeoForge や Mod のもの)は `data/yourmodid/registrynamespace/registrypath` という形式を使います(例: `data/yourmodid/neoforge/biome_modifier`。`neoforge` が Registry の名前空間、`biome_modifier` が Registry のパスです)。
+- Minecraft の Datapack Registry は `data/yourmodid/registrypath` という形式を使います( 例: `data/yourmodid/worldgen/biome`。`worldgen/biome` が Registry のパスです )。
+- その他すべての Datapack Registry( NeoForge や Mod のもの )は `data/yourmodid/registrynamespace/registrypath` という形式を使います( 例: `data/yourmodid/neoforge/biome_modifier`。`neoforge` が Registry の名前空間、`biome_modifier` が Registry のパスです )。
 
-Datapack Registry は `RegistryAccess` から取得できます。この `RegistryAccess` は、サーバーでは `ServerLevel#registryAccess()`、クライアントでは `Minecraft.getInstance().getConnection()#registryAccess()` を呼び出して取得できます(後者は実際にワールドに接続している場合にのみ機能します。そうでない場合、接続は null になります)。これらの呼び出しの結果は、他の Registry と同じように、特定の要素の取得や中身の反復処理に使えます。
+Datapack Registry は `RegistryAccess` から取得できます。この `RegistryAccess` は、サーバーでは `ServerLevel#registryAccess()`、クライアントでは `Minecraft.getInstance().getConnection()#registryAccess()` を呼び出して取得できます( 後者は実際にワールドに接続している場合にのみ機能します。そうでない場合、接続は null になります )。これらの呼び出しの結果は、他の Registry と同じように、特定の要素の取得や中身の反復処理に使えます。
 
 ### カスタム Datapack Registry {#custom-datapack-registries}
 
-カスタム Datapack Registry では、`Registry` を構築する必要はありません。代わりに、Registry キーと、中身を(デ)シリアライズするための [`Codec`][codec] が少なくとも 1 つ必要なだけです。先ほどの呪文の例で言えば、呪文の Registry を Datapack Registry として登録するには次のようにします。
+カスタム Datapack Registry では、`Registry` を構築する必要はありません。代わりに、Registry キーと、中身を( デ )シリアライズするための [`Codec`][codec] が少なくとも 1 つ必要なだけです。先ほどの呪文の例で言えば、呪文の Registry を Datapack Registry として登録するには次のようにします。
 
 ```java
 public static final ResourceKey<Registry<Spell>> SPELL_REGISTRY_KEY = ResourceKey.createRegistryKey(ResourceLocation.fromNamespaceAndPath("yourmodid", "spells"));
@@ -223,7 +223,7 @@ public static void registerDatapackRegistries(DataPackRegistryEvent.NewRegistry 
 
 JSON ファイルをすべて手で書くのは面倒で間違いも起きやすいため、NeoForge は JSON ファイルを生成する[データプロバイダ][datagenindex]を提供しています。これは組み込みの Datapack Registry と、自作の Datapack Registry の両方で使えます。
 
-まず、`RegistrySetBuilder` を作成し、そこにエントリを追加します(1 つの `RegistrySetBuilder` で複数の Registry のエントリを保持できます)。
+まず、`RegistrySetBuilder` を作成し、そこにエントリを追加します( 1 つの `RegistrySetBuilder` で複数の Registry のエントリを保持できます )。
 
 ```java
 new RegistrySetBuilder()

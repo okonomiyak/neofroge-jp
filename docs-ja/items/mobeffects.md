@@ -3,15 +3,15 @@ sidebar_position: 4
 ---
 # モブ効果とポーション {#mob-effects--potions}
 
-ステータス効果(ポーション効果と呼ばれることもあり、コード上では `MobEffect` と呼ばれます)は、毎 tick エンティティに影響を与える効果です。この記事では、その使い方、効果とポーションの違い、独自の効果の追加方法を説明します。
+ステータス効果( ポーション効果と呼ばれることもあり、コード上では `MobEffect` と呼ばれます )は、毎 tick エンティティに影響を与える効果です。この記事では、その使い方、効果とポーションの違い、独自の効果の追加方法を説明します。
 
 ## 用語 {#terminology}
 
 - `MobEffect` は、毎 tick エンティティに影響を与えます。[Block][block] や [Item][item] と同様に、`MobEffect` は Registry のオブジェクトです。つまり、[登録][registration]する必要があり、シングルトンです。
     - **即時のモブ効果**は、1 tick だけ適用されるように作られた特別な種類のモブ効果です。バニラには、即時回復と即時ダメージの 2 つの即時効果があります。
-- `MobEffectInstance` は `MobEffect` のインスタンスで、効果時間、増幅値、その他いくつかのプロパティ(後述)が設定されています。`MobEffectInstance` と `MobEffect` の関係は、[`ItemStack`][itemstack] と `Item` の関係と同じです。
-- `Potion` は `MobEffectInstance` の集まりです。バニラでは主に 4 つのポーション系 Item(後述)にポーションを使いますが、任意の Item に自由に設定できます。設定されたポーションをその Item が使うかどうか、どう使うかは、Item 次第です。
-- **ポーション系 Item** は、ポーションを設定することを想定した Item です。これは非公式の用語で、バニラの `PotionItem` クラスとは関係ありません(このクラスは「通常の」ポーションの Item を指します)。Minecraft には現在、ポーション、スプラッシュポーション、残留ポーション、効能付きの矢の 4 つのポーション系 Item がありますが、Mod によって追加されることもあります。
+- `MobEffectInstance` は `MobEffect` のインスタンスで、効果時間、増幅値、その他いくつかのプロパティ( 後述 )が設定されています。`MobEffectInstance` と `MobEffect` の関係は、[`ItemStack`][itemstack] と `Item` の関係と同じです。
+- `Potion` は `MobEffectInstance` の集まりです。バニラでは主に 4 つのポーション系 Item( 後述 )にポーションを使いますが、任意の Item に自由に設定できます。設定されたポーションをその Item が使うかどうか、どう使うかは、Item 次第です。
+- **ポーション系 Item** は、ポーションを設定することを想定した Item です。これは非公式の用語で、バニラの `PotionItem` クラスとは関係ありません( このクラスは「通常の」ポーションの Item を指します )。Minecraft には現在、ポーション、スプラッシュポーション、残留ポーション、効能付きの矢の 4 つのポーション系 Item がありますが、Mod によって追加されることもあります。
 
 ## `MobEffect` {#mobeffects}
 
@@ -158,7 +158,7 @@ entity.removeEffect(MobEffects.REGENERATION);
 public static final Supplier<Potion> MY_POTION = POTIONS.register("my_potion", () -> new Potion(new MobEffectInstance(MY_MOB_EFFECT, 3600)));
 ```
 
-`new Potion` の引数は可変長引数である点に注意してください。つまり、ポーションには好きなだけ効果を追加できます。また、空のポーション、つまり効果を何も持たないポーションも作れます。`new Potion()` を呼び出すだけです!(ちなみに、バニラはこの方法で `awkward`(奇妙なポーション)を追加しています。)
+`new Potion` の引数は可変長引数である点に注意してください。つまり、ポーションには好きなだけ効果を追加できます。また、空のポーション、つまり効果を何も持たないポーションも作れます。`new Potion()` を呼び出すだけです!( ちなみに、バニラはこの方法で `awkward`( 奇妙なポーション )を追加しています。 )
 
 ポーションの名前は、コンストラクタの最初の引数として渡せます。これは翻訳に使われます。たとえば、バニラの延長版や強化版のポーションは、これを使って基本版と同じ名前にしています。名前は必須ではなく、省略した場合は Registry から名前が問い合わせられます。
 

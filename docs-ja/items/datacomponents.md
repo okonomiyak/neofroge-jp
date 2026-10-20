@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 
 # データコンポーネント {#data-components}
 
-データコンポーネントは、`ItemStack` にデータを保存するために使われる、マップ内のキーと値のペアです。花火の爆発や道具など、それぞれのデータは実際のオブジェクトとしてスタックに保存されます。そのため、汎用的なエンコード済みのインスタンス(例: `CompoundTag`、`JsonElement`)を動的に変換しなくても、値を確認・操作できます。
+データコンポーネントは、`ItemStack` にデータを保存するために使われる、マップ内のキーと値のペアです。花火の爆発や道具など、それぞれのデータは実際のオブジェクトとしてスタックに保存されます。そのため、汎用的なエンコード済みのインスタンス( 例: `CompoundTag`、`JsonElement` )を動的に変換しなくても、値を確認・操作できます。
 
 ## `DataComponentType`
 
@@ -180,7 +180,7 @@ public static final DeferredHolder<DataComponentType<?>, DataComponentType<Examp
 
 ## コンポーネントマップ {#the-component-map}
 
-すべてのデータコンポーネントは、`DataComponentType` をキー、オブジェクトを値として `DataComponentMap` に保存されます。`DataComponentMap` は、読み取り専用の `Map` と同じように機能します。そのため、`DataComponentType` を指定してエントリを取得する(`#get`)メソッドや、存在しない場合にデフォルト値を返す(`#getOrDefault`)メソッドがあります。
+すべてのデータコンポーネントは、`DataComponentType` をキー、オブジェクトを値として `DataComponentMap` に保存されます。`DataComponentMap` は、読み取り専用の `Map` と同じように機能します。そのため、`DataComponentType` を指定してエントリを取得する( `#get` )メソッドや、存在しない場合にデフォルト値を返す( `#getOrDefault` )メソッドがあります。
 
 ```java
 // For some DataComponentMap map
@@ -193,7 +193,7 @@ DyeColor color = map.get(DataComponents.BASE_COLOR);
 
 ### `PatchedDataComponentMap`
 
-デフォルトの `DataComponentMap` には読み取り系の操作のメソッドしかないため、書き込み系の操作はサブクラスの `PatchedDataComponentMap` でサポートされています。これには、コンポーネントの値の設定(`#set`)や、コンポーネント自体の削除(`#remove`)が含まれます。
+デフォルトの `DataComponentMap` には読み取り系の操作のメソッドしかないため、書き込み系の操作はサブクラスの `PatchedDataComponentMap` でサポートされています。これには、コンポーネントの値の設定( `#set` )や、コンポーネント自体の削除( `#remove` )が含まれます。
 
 `PatchedDataComponentMap` は、プロトタイプとパッチマップを使って変更を保存します。プロトタイプは、このマップが持つべきデフォルトのコンポーネントと
 その値を含む `DataComponentMap` です。パッチマップは、`DataComponentType` から `Optional` の値へのマップで、デフォルトのコンポーネントに加えられた変更を含みます。
@@ -230,7 +230,7 @@ DyeColor color = stack.get(DataComponents.BASE_COLOR);
 
 `MutableDataComponentHolder` は、コンポーネントマップへの書き込み系のメソッドをサポートするために NeoForge が提供するインターフェースです。バニラと NeoForge の実装はすべて `PatchedDataComponentMap` を使ってデータコンポーネントを保存しているため、`#set` と `#remove` のメソッドにも同名の委譲メソッドがあります。
 
-さらに、`MutableDataComponentHolder` には `#update` メソッドもあります。これは、コンポーネントの値(設定されていなければ渡されたデフォルト値)を取得し、その値に対して操作を行い、マップに設定し直すまでを処理します。操作には、コンポーネントの値を受け取ってコンポーネントの値を返す `UnaryOperator` か、コンポーネントの値と別のオブジェクトを受け取ってコンポーネントの値を返す `BiFunction` を使います。
+さらに、`MutableDataComponentHolder` には `#update` メソッドもあります。これは、コンポーネントの値( 設定されていなければ渡されたデフォルト値 )を取得し、その値に対して操作を行い、マップに設定し直すまでを処理します。操作には、コンポーネントの値を受け取ってコンポーネントの値を返す `UnaryOperator` か、コンポーネントの値と別のオブジェクトを受け取ってコンポーネントの値を返す `BiFunction` を使います。
 
 ```java
 // For some ItemStack stack
@@ -278,7 +278,7 @@ public static final Item COMPONENT_EXAMPLE = REGISTRAR.register("component",
 );
 ```
 
-バニラや他の Mod の既存の Item にデータコンポーネントを追加したい場合は、[**Mod の EventBus**][modbus] で `ModifyDefaultComponentsEvent` をリッスンしてください。この Event には `modify` と `modifyMatching` のメソッドがあり、対象の Item の `DataComponentPatch.Builder` を変更できます。ビルダーでは、コンポーネントを設定(`#set`)したり、既存のコンポーネントを削除(`#remove`)したりできます。
+バニラや他の Mod の既存の Item にデータコンポーネントを追加したい場合は、[**Mod の EventBus**][modbus] で `ModifyDefaultComponentsEvent` をリッスンしてください。この Event には `modify` と `modifyMatching` のメソッドがあり、対象の Item の `DataComponentPatch.Builder` を変更できます。ビルダーでは、コンポーネントを設定( `#set` )したり、既存のコンポーネントを削除( `#remove` )したりできます。
 
 ```java
 @SubscribeEvent // on the mod event bus

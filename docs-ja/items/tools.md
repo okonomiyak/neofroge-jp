@@ -3,11 +3,11 @@ sidebar_position: 3
 ---
 # 道具と防具 {#tools--armor}
 
-道具は、主に [Block][block] を壊すために使う [Item][item] です。多くの Mod が、新しい道具のセット(たとえば銅の道具)や、新しい種類の道具(たとえばハンマー)を追加しています。
+道具は、主に [Block][block] を壊すために使う [Item][item] です。多くの Mod が、新しい道具のセット( たとえば銅の道具 )や、新しい種類の道具( たとえばハンマー )を追加しています。
 
 ## カスタムの道具セット {#custom-tool-sets}
 
-道具のセットは、通常ツルハシ、斧、シャベル、クワ、剣の 5 つの Item からなります(剣は従来の意味での道具ではありませんが、一貫性のためここに含めています)。これらの Item には、それぞれ対応するクラス `PickaxeItem`、`AxeItem`、`ShovelItem`、`HoeItem`、`SwordItem` があります。道具のクラス階層は次のとおりです。
+道具のセットは、通常ツルハシ、斧、シャベル、クワ、剣の 5 つの Item からなります( 剣は従来の意味での道具ではありませんが、一貫性のためここに含めています )。これらの Item には、それぞれ対応するクラス `PickaxeItem`、`AxeItem`、`ShovelItem`、`HoeItem`、`SwordItem` があります。道具のクラス階層は次のとおりです。
 
 ```text
 Item
@@ -20,7 +20,7 @@ Item
     - SwordItem
 ```
 
-`TieredItem` は、特定の `Tier`(後述)を持つ Item のためのヘルパーを含むクラスです。`DiggerItem` は、Block を壊すために作られた Item のためのヘルパーを含みます。ハサミなど、通常は道具とみなされる他の Item はこの階層に含まれない点に注意してください。それらは `Item` を直接継承し、破壊のロジックを自分で持っています。
+`TieredItem` は、特定の `Tier`( 後述 )を持つ Item のためのヘルパーを含むクラスです。`DiggerItem` は、Block を壊すために作られた Item のためのヘルパーを含みます。ハサミなど、通常は道具とみなされる他の Item はこの階層に含まれない点に注意してください。それらは `Item` を直接継承し、破壊のロジックを自分で持っています。
 
 標準的な道具のセットを作るには、まず `Tier` を定義する必要があります。参考になる値は、Minecraft の `Tiers` enum を確認してください。この例では銅の道具を使いますが、ここには独自の素材を使い、必要に応じて値を調整してかまいません。
 
@@ -89,7 +89,7 @@ public static final TagKey<Block> NEEDS_COPPER_TOOL = TagKey.create(BuiltInRegis
 public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = TagKey.create(BuiltInRegistries.BLOCK.key(), ResourceLocation.fromNamespaceAndPath(MOD_ID, "incorrect_for_cooper_tool"));
 ```
 
-次に、タグの中身を書きます。たとえば、銅で金鉱石、金ブロック、レッドストーン鉱石は採掘できるが、ダイヤモンドやエメラルドは採掘できないようにしてみましょう(レッドストーンブロックはすでに石の道具で採掘できます)。タグファイルは `src/main/resources/data/mod_id/tags/block/needs_copper_tool.json` に置きます(`mod_id` は自分の Mod ID です)。
+次に、タグの中身を書きます。たとえば、銅で金鉱石、金ブロック、レッドストーン鉱石は採掘できるが、ダイヤモンドやエメラルドは採掘できないようにしてみましょう( レッドストーンブロックはすでに石の道具で採掘できます )。タグファイルは `src/main/resources/data/mod_id/tags/block/needs_copper_tool.json` に置きます( `mod_id` は自分の Mod ID です )。
 
 ```json5
 {
@@ -123,18 +123,18 @@ public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = TagKey.create(Buil
 
 ## カスタムの道具 {#custom-tools}
 
-カスタムの道具は、`Item.Properties#component` で、Item のデフォルトのコンポーネント一覧に `Tool` [データコンポーネント][datacomponents]を(`DataComponents#TOOL` によって)追加することで作れます。`DiggerItem` は、前述のとおり `Tier` を受け取って `Tool` を構築する実装です。`DiggerItem` には、変更後の攻撃力や攻撃速度など、道具の `Item.Properties#attributes` に渡す値を用意するための便利なメソッド `#createAttributes` もあります。
+カスタムの道具は、`Item.Properties#component` で、Item のデフォルトのコンポーネント一覧に `Tool` [データコンポーネント][datacomponents]を( `DataComponents#TOOL` によって )追加することで作れます。`DiggerItem` は、前述のとおり `Tier` を受け取って `Tool` を構築する実装です。`DiggerItem` には、変更後の攻撃力や攻撃速度など、道具の `Item.Properties#attributes` に渡す値を用意するための便利なメソッド `#createAttributes` もあります。
 
-`Tool` は、`Tool.Rule` の一覧、道具を持っているときのデフォルトの採掘速度(デフォルトは `1`)、Block を採掘したときに道具が受けるダメージ量(デフォルトは `1`)を持ちます。`Tool.Rule` は 3 つの情報を持ちます。ルールを適用する Block の `HolderSet`、そのセット内の Block を採掘する速度(任意)、そしてその道具でそれらの Block がドロップするかどうかを決める真偽値(任意)です。任意の値が設定されていない場合は、他のルールがチェックされます。すべてのルールが当てはまらない場合のデフォルトの動作は、デフォルトの採掘速度で、Block はドロップしない、というものです。
+`Tool` は、`Tool.Rule` の一覧、道具を持っているときのデフォルトの採掘速度( デフォルトは `1` )、Block を採掘したときに道具が受けるダメージ量( デフォルトは `1` )を持ちます。`Tool.Rule` は 3 つの情報を持ちます。ルールを適用する Block の `HolderSet`、そのセット内の Block を採掘する速度( 任意 )、そしてその道具でそれらの Block がドロップするかどうかを決める真偽値( 任意 )です。任意の値が設定されていない場合は、他のルールがチェックされます。すべてのルールが当てはまらない場合のデフォルトの動作は、デフォルトの採掘速度で、Block はドロップしない、というものです。
 
 :::note
 `HolderSet` は、`Registry#getOrCreateTag` で `TagKey` から作成できます。
 :::
 
-マルチツールのような Item(2 つ以上の道具を 1 つにまとめた Item。たとえば斧とツルハシを 1 つにした Item)や、その他の道具のような Item を作るのに、既存の `TieredItem` のいずれかを継承する必要はありません。次の要素を組み合わせるだけで実装できます。
+マルチツールのような Item( 2 つ以上の道具を 1 つにまとめた Item。たとえば斧とツルハシを 1 つにした Item )や、その他の道具のような Item を作るのに、既存の `TieredItem` のいずれかを継承する必要はありません。次の要素を組み合わせるだけで実装できます。
 
 - `Item.Properties#component` で `DataComponents#TOOL` を設定し、独自のルールを持つ `Tool` を追加する。
-- `Item.Properties#attributes` で、Item に属性(攻撃力、攻撃速度など)を追加する。
+- `Item.Properties#attributes` で、Item に属性( 攻撃力、攻撃速度など )を追加する。
 - `IItemExtension#canPerformAction` をオーバーライドして、その Item が実行できる [`ItemAbility`][itemability] を決める。
 - `ItemAbility` に基づいて、右クリック時に Item でブロックステートを変更したい場合は、`IBlockExtension#getToolModifiedState` を呼び出す。
 - 特定のエンチャントを付けられるように、道具を `minecraft:enchantable/*` タグのいくつかに追加する。
@@ -144,9 +144,9 @@ public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = TagKey.create(Buil
 `ItemAbility` は、Item ができることとできないことを抽象化したものです。左クリックと右クリックの両方の動作が含まれます。NeoForge は、`ItemAbilities` クラスにデフォルトの `ItemAbility` を用意しています。
 
 - 採掘のアビリティ。前述の 4 種類の `DiggerItem` すべてに加え、剣とハサミによる採掘にもあります。
-- 斧の右クリックのアビリティ。樹皮を剥ぐ(原木)、削る(酸化した銅)、蝋を取る(錆止めされた銅)があります。
-- ハサミのアビリティ。収穫(ハニカム)、彫る(カボチャ)、解除(トリップワイヤー)があります。
-- シャベルで平らにする(土の道)、剣のなぎ払い、クワで耕す、盾で防ぐ、釣り竿を投げるためのアビリティ。
+- 斧の右クリックのアビリティ。樹皮を剥ぐ( 原木 )、削る( 酸化した銅 )、蝋を取る( 錆止めされた銅 )があります。
+- ハサミのアビリティ。収穫( ハニカム )、彫る( カボチャ )、解除( トリップワイヤー )があります。
+- シャベルで平らにする( 土の道 )、剣のなぎ払い、クワで耕す、盾で防ぐ、釣り竿を投げるためのアビリティ。
 
 独自の `ItemAbility` を作るには、`ItemAbility#get` を使います。必要に応じて新しい `ItemAbility` が作成されます。そのうえで、カスタムの道具の種類で、必要に応じて `IItemExtension#canPerformAction` をオーバーライドします。
 
@@ -154,7 +154,7 @@ public static final TagKey<Block> INCORRECT_FOR_COPPER_TOOL = TagKey.create(Buil
 
 ## 防具 {#armor}
 
-道具と同様に、防具も(別のものですが)ティアの仕組みを使います。道具で `Tier` と呼ばれるものは、防具では `ArmorMaterial` と呼ばれます。上と同様に、この例では銅の防具を追加する方法を示します。必要に応じて変更してください。ただし、`Tier` と異なり、`ArmorMaterial` は[登録][registered]する必要があります。バニラの値は `ArmorMaterials` クラスを参照してください。
+道具と同様に、防具も( 別のものですが )ティアの仕組みを使います。道具で `Tier` と呼ばれるものは、防具では `ArmorMaterial` と呼ばれます。上と同様に、この例では銅の防具を追加する方法を示します。必要に応じて変更してください。ただし、`Tier` と異なり、`ArmorMaterial` は[登録][registered]する必要があります。バニラの値は `ArmorMaterials` クラスを参照してください。
 
 ```java
 // ARMOR_MATERIALS is a DeferredRegister<ArmorMaterial>

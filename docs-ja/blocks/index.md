@@ -29,7 +29,7 @@ level.getBlockState(position) // returns the blockstate placed in the given leve
         .is(MyBlockRegistrationClass.MY_BLOCK);
 ```
 
-この方法には、`block1 == block2` が機能し、Java の `equals` メソッドの代わりに使えるという便利な効果もあります(もちろん `equals` も機能しますが、いずれにせよ参照で比較するので意味がありません)。
+この方法には、`block1 == block2` が機能し、Java の `equals` メソッドの代わりに使えるという便利な効果もあります( もちろん `equals` も機能しますが、いずれにせよ参照で比較するので意味がありません )。
 
 :::danger
 登録の外で `new Block()` を呼び出してはいけません!そうした時点で、問題が起きうるし、実際に起きます。
@@ -49,17 +49,17 @@ public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBloc
 
 ### 基本的な Block {#basic-blocks}
 
-特別な機能が不要な単純な Block(丸石や木材など)には、`Block` クラスを直接使えます。そのためには、登録時に `BlockBehaviour.Properties` を引数として `Block` をインスタンス化します。この `BlockBehaviour.Properties` は `BlockBehaviour.Properties#of` で作成でき、メソッドを呼び出してカスタマイズできます。特に重要なメソッドは次のとおりです。
+特別な機能が不要な単純な Block( 丸石や木材など )には、`Block` クラスを直接使えます。そのためには、登録時に `BlockBehaviour.Properties` を引数として `Block` をインスタンス化します。この `BlockBehaviour.Properties` は `BlockBehaviour.Properties#of` で作成でき、メソッドを呼び出してカスタマイズできます。特に重要なメソッドは次のとおりです。
 
 - `destroyTime` - Block の破壊にかかる時間を決めます。
-    - 石の破壊時間は 1.5、土は 0.5、黒曜石は 50、岩盤は -1(破壊不可)です。
+    - 石の破壊時間は 1.5、土は 0.5、黒曜石は 50、岩盤は -1( 破壊不可 )です。
 - `explosionResistance` - Block の爆発耐性を決めます。
     - 石の爆発耐性は 6.0、土は 0.5、黒曜石は 1,200、岩盤は 3,600,000 です。
 - `sound` - Block を叩いたとき、壊したとき、置いたときの音を設定します。
     - デフォルト値は `SoundType.STONE` です。詳しくは[サウンドのページ][sounds]を参照してください。
 - `lightLevel` - Block の発光を設定します。`BlockState` を引数に取り、0 から 15 の値を返す関数を受け取ります。
     - たとえば、グロウストーンは `state -> 15`、松明は `state -> 14` を使います。
-- `friction` - Block の摩擦(滑りやすさ)を設定します。
+- `friction` - Block の摩擦( 滑りやすさ )を設定します。
     - デフォルト値は 0.6 です。氷は 0.98 を使います。
 
 たとえば、簡単な実装は次のようになります。
@@ -83,14 +83,14 @@ public static final DeferredBlock<Block> MY_BETTER_BLOCK = BLOCKS.register(
 :::note
 ワールド内の Block と、インベントリ内のものは同じではないことを理解しておくことが重要です。インベントリ内で Block のように見えるものは、実際には `BlockItem` です。これは、使うと Block を設置する特別な種類の [Item][item] です。つまり、クリエイティブタブや最大スタック数などは、対応する `BlockItem` が扱います。
 
-`BlockItem` は Block とは別に登録する必要があります。Block に Item が必要とは限らないためです。たとえば、回収されることを想定していない Block(火など)がそうです。
+`BlockItem` は Block とは別に登録する必要があります。Block に Item が必要とは限らないためです。たとえば、回収されることを想定していない Block( 火など )がそうです。
 :::
 
 ### さらなる機能 {#more-functionality}
 
 `Block` を直接使うだけでは、ごく基本的な Block しか作れません。プレイヤーとのインタラクションや異なる当たり判定などの機能を追加したい場合は、`Block` を継承したカスタムクラスが必要です。`Block` クラスには、さまざまな処理を行うためにオーバーライドできるメソッドが多数あります。詳しくは `Block`、`BlockBehaviour`、`IBlockExtension` の各クラスを参照してください。Block のよくある使い方のいくつかについては、下の [Block の使用][usingblocks]のセクションも参照してください。
 
-異なるバリアントを持つ Block(下付き、上付き、2 段のバリアントを持つハーフブロックなど)を作りたい場合は、[ブロックステート][blockstates]を使ってください。そして、追加のデータを保存する Block(インベントリを保存するチェストなど)が必要な場合は、[BlockEntity][blockentities] を使ってください。目安として、状態の数が有限でそれなりに少ない(多くても数百程度)ならブロックステートを、無限またはほぼ無限なら BlockEntity を使います。
+異なるバリアントを持つ Block( 下付き、上付き、2 段のバリアントを持つハーフブロックなど )を作りたい場合は、[ブロックステート][blockstates]を使ってください。そして、追加のデータを保存する Block( インベントリを保存するチェストなど )が必要な場合は、[BlockEntity][blockentities] を使ってください。目安として、状態の数が有限でそれなりに少ない( 多くても数百程度 )ならブロックステートを、無限またはほぼ無限なら BlockEntity を使います。
 
 #### Block タイプ {#block-types}
 
@@ -173,7 +173,7 @@ public static final DeferredBlock<Block> EXAMPLE_BLOCK = BLOCKS.registerBlock(
 );
 ```
 
-内部的には、渡された Block のファクトリ(通常はコンストラクタ)にプロパティの引数を適用し、`BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of()))` を呼び出しているだけです。
+内部的には、渡された Block のファクトリ( 通常はコンストラクタ )にプロパティの引数を適用し、`BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of()))` を呼び出しているだけです。
 
 `Block::new` を使う場合は、ファクトリを完全に省略できます。
 
@@ -202,15 +202,15 @@ Block を登録してワールドに置くと、テクスチャなどが欠け�
 
 Block を直接使って何かをすることはほとんどありません。実際、Minecraft 全体で最もよく行われる操作であろう 2 つ、つまりある位置の Block の取得と、ある位置への Block の設置は、Block ではなくブロックステートを使います。一般的な設計方針は、Block が動作を定義し、その動作を実際にはブロックステートを通して実行するというものです。このため、`BlockState` は `Block` のメソッドに引数として渡されることがよくあります。ブロックステートの使い方や、Block からブロックステートを取得する方法について詳しくは、[ブロックステートの使用][usingblockstates]を参照してください。
 
-いくつかの場面では、`Block` の複数のメソッドが異なるタイミングで使われます。以下のサブセクションでは、Block に関するよくある処理の流れ(パイプライン)を挙げます。特に断りのない限り、すべてのメソッドは両方の論理 Side で呼ばれ、両方の Side で同じ結果を返す必要があります。
+いくつかの場面では、`Block` の複数のメソッドが異なるタイミングで使われます。以下のサブセクションでは、Block に関するよくある処理の流れ( パイプライン )を挙げます。特に断りのない限り、すべてのメソッドは両方の論理 Side で呼ばれ、両方の Side で同じ結果を返す必要があります。
 
 ### Block の設置 {#placing-a-block}
 
-Block の設置ロジックは `BlockItem#useOn`(またはそのサブクラスの実装。たとえばスイレンの葉に使われる `PlaceOnWaterBlockItem` など)から呼ばれます。ゲームがそこに至るまでの流れについて詳しくは、[インタラクションパイプライン][interactionpipeline]を参照してください。実際には、`BlockItem`(たとえば丸石のアイテム)が右クリックされた時点で、この動作が呼ばれます。
+Block の設置ロジックは `BlockItem#useOn`( またはそのサブクラスの実装。たとえばスイレンの葉に使われる `PlaceOnWaterBlockItem` など )から呼ばれます。ゲームがそこに至るまでの流れについて詳しくは、[インタラクションパイプライン][interactionpipeline]を参照してください。実際には、`BlockItem`( たとえば丸石のアイテム )が右クリックされた時点で、この動作が呼ばれます。
 
 - いくつかの前提条件がチェックされます。たとえば、スペクテイターモードでないこと、Block に必要なすべてのフィーチャーフラグが有効であること、対象の位置がワールドボーダーの外でないことなどです。これらのチェックのうち 1 つでも失敗すると、パイプラインは終了します。
 - Block を設置しようとしている位置に現在ある Block に対して、`BlockBehaviour#canBeReplaced` が呼ばれます。`false` を返すと、パイプラインは終了します。ここで `true` を返す代表的な例は、背の高い草や雪の層です。
-- `Block#getStateForPlacement` が呼ばれます。ここでは、コンテキスト(位置、回転、Block が設置される面などの情報を含む)に応じて、異なるブロックステートを返せます。これは、たとえば異なる向きに設置できる Block に便利です。
+- `Block#getStateForPlacement` が呼ばれます。ここでは、コンテキスト( 位置、回転、Block が設置される面などの情報を含む )に応じて、異なるブロックステートを返せます。これは、たとえば異なる向きに設置できる Block に便利です。
 - 前のステップで得たブロックステートで、`BlockBehaviour#canSurvive` が呼ばれます。`false` を返すと、パイプラインは終了します。
 - `Level#setBlock` の呼び出しによって、ブロックステートがレベルに設定されます。
     - その `Level#setBlock` の呼び出しの中で、`BlockBehaviour#onPlace` が呼ばれます。
@@ -222,7 +222,7 @@ Block の破壊は時間がかかるため、少し複雑です。この処理�
 
 - 左クリックすると、「開始」段階に入ります。
 - 続いて左クリックを押し続ける必要があり、「採掘」段階に入ります。**この段階のメソッドは毎 tick 呼ばれます。**
-- 「継続」段階が(左クリックを離すことで)中断されず、Block が壊れると、「実際の破壊」段階に入ります。
+- 「継続」段階が( 左クリックを離すことで )中断されず、Block が壊れると、「実際の破壊」段階に入ります。
 
 疑似コードで書くと次のようになります。
 
@@ -251,17 +251,17 @@ while (leftClickIsBeingHeld()) {
 
 #### 「採掘」段階 {#the-mining-stage}
 
-- `PlayerInteractEvent.LeftClickBlock` が発火されます。Event がキャンセルされると、パイプラインは「後処理」段階に移ります。(訳注: 原文では「後処理」(finishing)段階の内容は説明されていません。すぐに止まる「パイプラインは終了します」とは区別されています)
+- `PlayerInteractEvent.LeftClickBlock` が発火されます。Event がキャンセルされると、パイプラインは「後処理」段階に移ります。( 訳注: 原文では「後処理」( finishing )段階の内容は説明されていません。すぐに止まる「パイプラインは終了します」とは区別されています )
     - クライアントで Event をキャンセルすると、パケットがサーバーに送られないため、サーバー側のロジックは何も実行されない点に注意してください。
     - 一方、サーバーでこの Event をキャンセルしてもクライアントのコードは実行されるため、非同期の原因になることがあります!
 - `Block#getDestroyProgress` が呼ばれ、その値が内部の破壊進行度カウンターに加算されます。
     - `Block#getDestroyProgress` は 0 から 1 の float 値を返し、毎 tick 破壊進行度カウンターをどれだけ増やすかを表します。
-- それに応じて、進行度のオーバーレイ(ひび割れのテクスチャ)が更新されます。
-- 破壊進行度が 1.0 を超えると(つまり完了し、Block が壊れるべき状態になると)、「採掘」段階を抜けて「実際の破壊」段階に入ります。
+- それに応じて、進行度のオーバーレイ( ひび割れのテクスチャ )が更新されます。
+- 破壊進行度が 1.0 を超えると( つまり完了し、Block が壊れるべき状態になると )、「採掘」段階を抜けて「実際の破壊」段階に入ります。
 
 #### 「実際の破壊」段階 {#the-actually-breaking-stage}
 
-- `Item#canAttackBlock` が呼ばれます。`false` を返す(Block を壊すべきでないと判断した)と、パイプラインは「後処理」段階に移ります。
+- `Item#canAttackBlock` が呼ばれます。`false` を返す( Block を壊すべきでないと判断した )と、パイプラインは「後処理」段階に移ります。
 - Block が `GameMasterBlock` のインスタンスの場合、`Player#canUseGameMasterBlocks` が呼ばれます。これは、プレイヤーがクリエイティブ専用の Block を破壊できるかどうかを判定します。`false` の場合、パイプラインは「後処理」段階に移ります。
 - サーバーのみ: `Player#blockActionRestricted` が呼ばれます。これは、現在のプレイヤーがその Block を壊せないかどうかを判定します。`true` の場合、パイプラインは「後処理」段階に移ります。
 - サーバーのみ: `BlockEvent.BreakEvent` が発火されます。キャンセルされた場合、または `getExpToDrop` が -1 を返した場合、パイプラインは「後処理」段階に移ります。キャンセル状態の初期値は、上記の 3 つのメソッドによって決まります。
@@ -280,7 +280,7 @@ while (leftClickIsBeingHeld()) {
 
 ### tick 処理 {#ticking}
 
-tick 処理は、ゲームの各部分を 1/20 秒、つまり 50 ミリ秒(「1 tick」)ごとに更新(tick)する仕組みです。Block には、それぞれ異なる方法で呼ばれる複数の tick 用メソッドがあります。
+tick 処理は、ゲームの各部分を 1/20 秒、つまり 50 ミリ秒( 「1 tick」 )ごとに更新( tick )する仕組みです。Block には、それぞれ異なる方法で呼ばれる複数の tick 用メソッドがあります。
 
 #### サーバーの tick とスケジュールされた tick {#server-ticking-and-tick-scheduling}
 
