@@ -24,3 +24,5 @@
 - datastorage/saveddata.md
 - gui/menus.md
 - gui/screens.md
+- inventories/container.md
+- inventories/capabilities.md

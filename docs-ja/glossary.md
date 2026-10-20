@@ -178,3 +178,9 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | narration | ナレーション |
 | focus | フォーカス |
 | teardown | 後片付け |
+| container | コンテナ( コード上は `Container` ) |
+| equipment slot | 装備スロット |
+| capability | capability( 英語のまま ) |
+| capability provider | capability プロバイダ |
+| invalidate / invalidation | 無効化する / 無効化 |
+| automation-accessible | 自動化でアクセスできる |
