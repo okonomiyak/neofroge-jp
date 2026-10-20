@@ -53,3 +53,7 @@
 - resources/server/tags.md
 - resources/server/advancements.md
 - resources/server/conditions.md
+- resources/server/datamaps/index.md
+- resources/server/datamaps/builtin.md
+- resources/server/enchantments/index.md
+- resources/server/enchantments/builtin.md

@@ -263,3 +263,10 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | criterion / criteria trigger | 条件 / 条件のトリガー |
 | toast | トースト通知 |
 | data load condition | データの読み込み条件 |
+| data map | データマップ |
+| merger / remover ( data map ) | マージャー / リムーバー |
+| enchantment | エンチャント |
+| enchantment effect component | エンチャント効果コンポーネント |
+| enchantability | エンチャント適性 |
+| value effect / location based effect / entity effect | 値の効果 / 位置に基づく効果 / エンティティの効果 |
+| enchantment names | 日本語版 Minecraft の名称に合わせる( 例: Sharpness → ダメージ増加、Mending → 修繕 ) |
