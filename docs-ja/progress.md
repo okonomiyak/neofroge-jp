@@ -49,3 +49,7 @@
 - resources/client/models/bakedmodel.md
 - resources/client/models/datagen.md
 - resources/client/models/modelloaders.md
+- resources/server/damagetypes.md
+- resources/server/tags.md
+- resources/server/advancements.md
+- resources/server/conditions.md

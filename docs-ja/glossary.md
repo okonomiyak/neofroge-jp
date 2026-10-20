@@ -257,3 +257,9 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | custom model loader | カスタムモデルローダー |
 | geometry | ジオメトリ |
 | composite model | 複合モデル |
+| damage type / damage source | ダメージタイプ / ダメージソース |
+| tag / tag provider | タグ / タグプロバイダ |
+| advancement / advancement tree / root advancement | 進捗 / 進捗ツリー / ルート進捗 |
+| criterion / criteria trigger | 条件 / 条件のトリガー |
+| toast | トースト通知 |
+| data load condition | データの読み込み条件 |
