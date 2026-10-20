@@ -215,3 +215,10 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | assertion | アサーション |
 | batch | バッチ |
 | buildscript | ビルドスクリプト |
+| access modifier | アクセス修飾子 |
+| directive | ディレクティブ |
+| descriptor / method descriptor | ディスクリプタ / メソッドディスクリプタ |
+| inner class | 内部クラス |
+| extensible enum | 拡張可能な enum |
+| ordinal | 序数 |
+| transformer ( bytecode ) | トランスフォーマー |

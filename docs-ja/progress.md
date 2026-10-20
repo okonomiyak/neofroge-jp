@@ -37,3 +37,5 @@
 - misc/config.md
 - misc/keymappings.md
 - misc/gametest.md
+- advanced/accesstransformers.md
+- advanced/extensibleenums.md
