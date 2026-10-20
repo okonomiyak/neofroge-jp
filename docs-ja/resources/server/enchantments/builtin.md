@@ -90,7 +90,7 @@ float modifiedValue = valueEffect.process(enchantLevel, server.random, baseValue
 #### `DataComponentType<List<ConditionalEffect<EnchantmentValueEffect>>>` として定義 {#defined-as-datacomponenttypelistconditionaleffectenchantmentvalueeffect}
 
 防具関連:
-- `minecraft:armor_effectiveness`: この武器に対する防具の有効性を、0( 防御なし )から 1( 通常の防御 )の尺度で決めます。防具貫通で使われています。( 要確認 )
+- `minecraft:armor_effectiveness`: この武器に対する防具の有効性を、0( 防御なし )から 1( 通常の防御 )の尺度で決めます。防具貫通で使われています。
 - `minecraft:damage_protection`: ダメージ軽減の「ポイント」1 つごとに、この Item を身に着けている間に受けるダメージを 4% 減らします。軽減は最大 80% までです。爆発耐性、落下耐性、火炎耐性、ダメージ軽減、飛び道具耐性で使われています。
 
 攻撃関連:
@@ -104,7 +104,7 @@ float modifiedValue = valueEffect.process(enchantLevel, server.random, baseValue
 - `minecraft:repair_with_xp`: 経験値の獲得によって Item が自身を修理するようにし、その効率を決めます。修繕で使われています。
 
 飛び道具関連:
-- `minecraft:ammo_use`: 弓やクロスボウを撃つときに使う矢の数を変更します。値は整数に丸められるため、1 未満の値では矢を消費しなくなります。無限で使われています。
+- `minecraft:ammo_use`: 弓やクロスボウを撃つときに使う弾薬の数を変更します。値は整数に丸められるため、1 未満の値では弾薬を消費しなくなります。無限で使われています。
 - `minecraft:projectile_piercing`: この武器から放たれた飛び道具が貫通するエンティティの数を変更します。貫通で使われています。
 - `minecraft:projectile_count`: この弓で撃ったときに出る飛び道具の数を変更します。拡散で使われています。
 - `minecraft:projectile_spread`: 撃った方向からの飛び道具の最大の広がりを、度単位で変更します。拡散で使われています。

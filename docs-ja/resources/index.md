@@ -49,8 +49,8 @@ NeoForge は、新しいワールドの作成時に、すべての Mod のデー
 |-----------------|--------------------------------|
 | `chat_type`     | [チャットの種類][chattype]         |
 | `function`      | [関数][function]          |
-| `item_modifier` | [アイテム修飾子][itemmodifier] |
-| `predicate`     | [述語][predicate]        |
+| `item_modifier` | [アイテムモディファイア][itemmodifier] |
+| `predicate`     | [プレディケート][predicate]        |
 
 ## `pack.mcmeta`
 
@@ -134,7 +134,7 @@ public static void gatherData(GatherDataEvent event) {
 
 データジェネレーターは、いくつかのコマンドライン引数を受け付けます。
 
-- `--mod examplemod`: この Mod のデータ生成を実行するよう指示します。所有する Mod ID については NeoGradle が自動で追加します。1 つのプロジェクトに複数の Mod がある場合などは、これを追加してください。
+- `--mod examplemod`: この Mod のデータ生成を実行するよう指示します。プロジェクトを所有する Mod の ID は NeoGradle が自動で追加します。1 つのプロジェクトに複数の Mod がある場合などは、これを追加してください。
 - `--output path/to/folder`: 指定したフォルダに出力するよう指示します。Gradle の `file(...).getAbsolutePath()` を使って絶対パスを生成することをおすすめします( パスはプロジェクトのルートディレクトリからの相対パスで指定します )。デフォルトは `file('src/generated/resources').getAbsolutePath()` です。
 - `--existing path/to/folder`: 既存のファイルを確認するときに、指定したフォルダも考慮するよう指示します。出力と同様に、Gradle の `file(...).getAbsolutePath()` を使うことをおすすめします。
 - `--existing-mod examplemod`: 既存のファイルを確認するときに、指定した Mod の JAR ファイル内のリソースも考慮するよう指示します。

@@ -273,7 +273,7 @@ public class MyRecipeTypeTagsProvider extends TagsProvider<RecipeType<?>> {
 }
 ```
 
-望ましく、かつ当てはまる場合は、`TagsProvider<T>` の代わりに `IntrinsicHolderTagsProvider<T>` を継承することもできます。そうすると、リソースキーだけでなく、オブジェクトを直接渡せるようになります。その場合は、オブジェクトに対するリソースキーを返す関数の引数も必要です。属性のタグを例にします。
+必要かつ適用できる場合は、`TagsProvider<T>` の代わりに `IntrinsicHolderTagsProvider<T>` を継承することもできます。そうすると、リソースキーだけでなく、オブジェクトを直接渡せるようになります。その場合は、オブジェクトに対するリソースキーを返す関数の引数も必要です。属性のタグを例にします。
 
 ```java
 public class MyAttributeTagsProvider extends TagsProvider<Attribute> {

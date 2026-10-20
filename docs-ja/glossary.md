@@ -281,3 +281,6 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | recipe factory / recipe builder | レシピファクトリ / レシピビルダー |
 | predicate ( Minecraft Wiki ) | プレディケート |
 | item modifier | アイテムモディファイア |
+| entity target ( loot ) | エンティティの対象 |
+| ingredient type | 材料の種類 |
+| map codec | マップ Codec |

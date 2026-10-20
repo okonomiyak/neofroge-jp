@@ -154,7 +154,7 @@ NeoForge はさらに、カスタムの Item でオーバーライドするた�
 
 ## `neoforge:raid_hero_gifts`
 
-襲撃を止めたときに、特定の `VillagerProfession` を持つ村人がくれる贈り物を設定できます。`GiveGiftToHero#GIFTS`( 現在は無視されます )の代わりとなるものです。このデータマップは `neoforge/data_maps/villager_profession/raid_hero_gifts.json` にあり、そのオブジェクトの構造は次のとおりです。
+襲撃を止めたときに、特定の `VillagerProfession` を持つ村人がくれることのある贈り物を設定できます。`GiveGiftToHero#GIFTS`( 現在は無視されます )の代わりとなるものです。このデータマップは `neoforge/data_maps/villager_profession/raid_hero_gifts.json` にあり、そのオブジェクトの構造は次のとおりです。
 
 ```json5
 {

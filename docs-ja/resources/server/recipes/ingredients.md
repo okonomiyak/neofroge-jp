@@ -2,7 +2,7 @@
 
 `Ingredient` は、指定した [`ItemStack`][itemstack] がレシピの有効な入力かどうかを判定するために、[レシピ][recipes]で使われます。そのために `Ingredient` は `Predicate<ItemStack>` を実装しており、`#test` を呼び出すことで、指定した `ItemStack` が材料に一致するかを確認できます。
 
-残念ながら、`Ingredient` の内部の多くはかなり混乱しています。NeoForge はこれを回避するため、可能な限り `Ingredient` クラスを使わず、代わりにカスタム材料用の `ICustomIngredient` インターフェースを導入しています。これは通常の `Ingredient` を直接置き換えるものではありませんが、`ICustomIngredient#toVanilla` と `Ingredient#getCustomIngredient` を使って、それぞれ `Ingredient` への変換と、その逆の変換ができます。
+残念ながら、`Ingredient` の内部の多くはあまり整理されていません。NeoForge はこれを回避するため、可能な限り `Ingredient` クラスを使わず、代わりにカスタム材料用の `ICustomIngredient` インターフェースを導入しています。これは通常の `Ingredient` を直接置き換えるものではありませんが、`ICustomIngredient#toVanilla` と `Ingredient#getCustomIngredient` を使って、それぞれ `Ingredient` への変換と、その逆の変換ができます。
 
 ## 組み込みの材料の種類 {#built-in-ingredient-types}
 
@@ -26,7 +26,7 @@
 
 ## カスタムの材料の種類 {#custom-ingredient-types}
 
-Mod 開発者は、`ICustomIngredient` のシステムを通じて独自の材料の種類を追加できます。例として、アイテムタグと、エンチャントから最低レベルへのマップを受け取る、エンチャント済みアイテムの材料を作ってみましょう。
+Mod 開発者は、`ICustomIngredient` のシステムを通じて独自の材料の種類を追加できます。例として、アイテムタグと、エンチャントと最低レベルを対応付けたマップを受け取る、エンチャント済みアイテムの材料を作ってみましょう。
 
 ```java
 public class MinEnchantedIngredient implements ICustomIngredient {

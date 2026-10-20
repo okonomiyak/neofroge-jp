@@ -139,7 +139,7 @@ ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.MUSHROOM_STEW)
 
 ### 特殊クラフト {#special-crafting}
 
-場合によっては、出力を入力から動的に作成する必要があります。多くの場合これは、入力のスタックから値をコピーまたは計算して、出力にデータコンポーネントを設定するためです。これらのレシピは通常、種類だけを指定し、それ以外はすべてハードコードされています。たとえば次のとおりです。
+場合によっては、出力を入力から動的に作成する必要があります。多くの場合これは、入力のスタックから値をコピーまたは計算して、出力にデータコンポーネントを設定するためです。これらのレシピは通常、タイプだけを指定し、それ以外はすべてハードコードされています。たとえば次のとおりです。
 
 ```java
 {
@@ -147,7 +147,7 @@ ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.MUSHROOM_STEW)
 }
 ```
 
-このレシピは革の防具を染色するためのもので、種類だけを指定し、それ以外はすべてハードコードされています。特に、JSON で表現するのが難しい色の計算がハードコードされています。Minecraft はすべての特殊クラフトレシピに `crafting_special_` という接頭辞を付けていますが、この慣例に従う必要はありません。
+このレシピは革の防具を染色するためのもので、タイプだけを指定し、それ以外はすべてハードコードされています。特に、JSON で表現するのが難しい色の計算がハードコードされています。Minecraft はすべての特殊クラフトレシピに `crafting_special_` という接頭辞を付けていますが、この慣例に従う必要はありません。
 
 このレシピの生成は次のようになります。
 
@@ -178,7 +178,7 @@ SpecialRecipeBuilder.special(ArmorDyeRecipe::new)
 
 ## かまど系のレシピ {#furnace-like-recipes}
 
-2 番目に重要なレシピのグループは、精錬やそれに似た処理で作られるものです。かまど（ 種類 `minecraft:smelting` ）、燻製器（ `minecraft:smoking` ）、溶鉱炉（ `minecraft:blasting` ）、焚き火（ `minecraft:campfire_cooking` ）で作られるすべてのレシピは、同じ形式を使います。
+2 番目に重要なレシピのグループは、精錬やそれに似た処理で作られるものです。かまど（ タイプ `minecraft:smelting` ）、燻製器（ `minecraft:smoking` ）、溶鉱炉（ `minecraft:blasting` ）、焚き火（ `minecraft:campfire_cooking` ）で作られるすべてのレシピは、同じ形式を使います。
 
 ```json5
 {
@@ -233,7 +233,7 @@ SimpleCookingRecipeBuilder.smelting(
 
 ## 石切 {#stonecutting}
 
-石切台のレシピは `minecraft:stonecutting` のレシピタイプを使います。種類、入力、出力しかない、これ以上ないほど単純なレシピです。
+石切台のレシピは `minecraft:stonecutting` のレシピタイプを使います。タイプ、入力、出力しかない、これ以上ないほど単純なレシピです。
 
 ```json5
 {
@@ -258,7 +258,7 @@ SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.ANDESITE), RecipeCatego
         .save(output, "andesite_slab_from_andesite_stonecutting");
 ```
 
-単一アイテムのレシピビルダーは、実際の ItemStack の結果をサポートしておらず、そのためデータコンポーネント付きの結果もサポートしていないことに注意してください。ただし、レシピのコーデックはこれをサポートしているので、この機能が必要な場合はカスタムビルダーを実装する必要があります。
+単一アイテムのレシピビルダーは、実際の ItemStack の結果をサポートしておらず、そのためデータコンポーネント付きの結果もサポートしていないことに注意してください。ただし、レシピの Codec はこれをサポートしているので、この機能が必要な場合はカスタムビルダーを実装する必要があります。
 
 ## 鍛冶 {#smithing}
 
@@ -343,7 +343,7 @@ SmithingTransformRecipeBuilder.smithing(
 - `template`: レシピのテンプレートとなる[材料][ingredient]です。バニラではいずれも、ここに防具の装飾の鍛冶型を使っています。
 - `addition`: レシピの追加となる[材料][ingredient]です。バニラではいずれも、ここに `minecraft:trim_materials` タグを使っています。
 
-このレシピシリアライザには、結果のフィールドがない点が目立ちます。これは、ベースの入力を使い、それにテンプレートと追加アイテムを「適用」するためです。つまり、他の入力に基づいてベースのコンポーネントを設定し、その操作の結果をレシピの結果として使います。
+このレシピシリアライザには、注目すべきことに、結果のフィールドがありません。これは、ベースの入力を使い、それにテンプレートと追加アイテムを「適用」するためです。つまり、他の入力に基づいてベースのコンポーネントを設定し、その操作の結果をレシピの結果として使います。
 
 データ生成では、`SmithingTrimRecipeBuilder#smithingTrim` を呼び出してレシピを追加します。
 

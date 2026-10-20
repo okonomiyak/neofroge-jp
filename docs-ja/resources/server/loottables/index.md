@@ -7,7 +7,7 @@ Minecraft は、Block のドロップ、エンティティのドロップ、チ�
 - すべての Block には、デフォルトで `<block_namespace>:blocks/<block_name>` にあるルートテーブルが関連付けられます。Block の `Properties` で `#noLootTable` を呼び出すとこれを無効にでき、ルートテーブルが作られず、Block は何もドロップしなくなります。これは主に、空気のような Block や技術的な Block で行われます。
 - `MobCategory.MISC` カテゴリ( `EntityType#getCategory` で決まります )に属さない `LivingEntity` のサブクラスには、デフォルトで `<entity_namespace>:entities/<entity_name>` にあるルートテーブルが関連付けられます。これは、`LivingEntity` を直接継承している場合は `#getLootTable` を、`Mob` またはそのサブクラスを継承している場合は `#getDefaultLootTable` をオーバーライドして変更できます。たとえば、ヒツジはこれを使って、毛の色に応じて異なるルートテーブルを抽選しています。
 - 構造物のチェストは、BlockEntity のデータでルートテーブルを指定します。Minecraft は、チェストのルートテーブルをすべて `minecraft:chests/<chest_name>` に置いています。Mod でもこの慣例に従うことをおすすめしますが、必須ではありません。
-- 襲撃の後に村人がプレイヤーに投げる贈り物のアイテムのルートテーブルは、[`neoforge:raid_hero_gifts` データマップ][raidherogifts]で定義されます。
+- 襲撃の後に村人がプレイヤーに投げることがある贈り物のアイテムのルートテーブルは、[`neoforge:raid_hero_gifts` データマップ][raidherogifts]で定義されます。
 - 釣りのルートテーブルなど、その他のルートテーブルは、必要なときに `level.getServer().reloadableRegistries().getLootTable(lootTableId)` から取得されます。バニラのすべてのルートテーブルの場所の一覧は `BuiltInLootTables` にあります。
 
 :::warning
@@ -33,7 +33,7 @@ Minecraft は、Block のドロップ、エンティティのドロップ、チ�
 - `minecraft:item`: 単一のアイテムのルートエントリで、抽選されると指定した Item をドロップします。コードでは、目的の Item を渡して `LootItem#lootTableItem` を呼び出して作成します。
     - スタック数やデータコンポーネントなどの設定は、ルート関数で行えます。
 - `minecraft:tag`: タグのエントリで、抽選されると指定したタグ内のすべての Item をドロップします。真偽値の `expand` プロパティの値によって、2 つの形があります。`expand` が true の場合は、タグ内の Item ごとに別々のエントリが生成されます。そうでなければ、すべての Item をドロップする 1 つのエントリが使われます。`TagEntry#tagContents`( `expand=false` の場合 )または `TagEntry#expandTag`( `expand=true` の場合 )に、アイテムの[タグキー][tags]を渡して作成します。
-    - たとえば、`expand` が true でタグが `#minecraft:planks` の場合、木材の種類ごとに 1 つのエントリが生成されます( バニラの 11 種類の木材に 11 個のエントリと、Mod の木材ごとに 1 つずつ )。それぞれが指定した重み、品質、関数を持ちます。一方、`expand` が false の場合は、すべての木材をドロップする 1 つのエントリが使われます。
+    - たとえば、`expand` が true でタグが `#minecraft:planks` の場合、木材の種類ごとに 1 つのエントリが生成されます( バニラの 11 種類の木材の分の 11 個と、Mod の木材ごとに 1 個ずつ )。それぞれが指定した重み、品質、関数を持ちます。一方、`expand` が false の場合は、すべての木材をドロップする 1 つのエントリが使われます。
 - `minecraft:dynamic`: 動的なドロップを参照するルートエントリ。動的なドロップは、事前には指定できないエントリをルートテーブルに追加するための仕組みで、代わりにコードで追加します。動的なドロップのエントリは、ID と、実際に Item を追加する `Consumer<ItemStack>` からなります。動的なドロップのエントリを追加するには、目的の ID で `minecraft:dynamic` のエントリを指定し、[ルートコンテキスト][context]に対応する Consumer を追加します。`DynamicLoot#dynamicEntry` で作成します。
 - `minecraft:loot_table`: 別のルートテーブルを抽選し、その結果を 1 つのエントリとして加えるルートエントリ。別のルートテーブルは、ID で指定することも、全体をインラインで書くこともできます。コードでは、`ResourceLocation` を渡して `NestedLootTable#lootTableReference` を呼び出すか、インラインのルートテーブルなら `LootTable` オブジェクトを渡して `NestedLootTable#inlineLootTable` を呼び出して作成します。
 
@@ -59,7 +59,7 @@ Mod 開発者は、[カスタムのルートエントリの種類][customentry]�
 
 ## 数値プロバイダ {#number-provider}
 
-数値プロバイダは、Datapack の文脈で( 疑似 )ランダムな数値を得る方法です。主にルートテーブルで使われますが、worldgen など他の場面でも使われます。バニラには、次の 6 つの数値プロバイダがあります。
+数値プロバイダは、Datapack の文脈で( 疑似 )ランダムな数値を得る方法です。主にルートテーブルで使われますが、ワールド生成など他の場面でも使われます。バニラには、次の 6 つの数値プロバイダがあります。
 
 - `minecraft:constant`: 定数の float 値で、必要に応じて整数に丸められます。`ConstantValue#exactly` で作成します。
 - `minecraft:uniform`: 一様分布のランダムな整数または float の値で、最小値と最大値を設定します。最小値と最大値の間のすべての値が、同じ確率で出ます。`UniformGenerator#between` で作成します。
@@ -87,7 +87,7 @@ Minecraft には、次のルートパラメータがあります。
 - `minecraft:enchantment_level`: エンチャントのロジックで使う、エンチャントのレベル。`LootContextParams.ENCHANTMENT_LEVEL` でアクセスします。
 - `minecraft:enchantment_active`: 使った Item にエンチャントがあるかどうか。シルクタッチのチェックなどで使われます。`LootContextParams.ENCHANTMENT_ACTIVE` でアクセスします。
 - `minecraft:block_state`: ルートテーブルに関連付けられたブロックステート。例: 壊されたブロックステート。`LootContextParams.BLOCK_STATE` でアクセスします。
-- `minecraft:block_entity`: ルートテーブルに関連付けられた BlockEntity。例: 壊された Block に関連付けられた BlockEntity。シュルカーボックスが、ドロップしたアイテムにインベントリを保存するのに使っています。`LootContextParams.BLOCK_ENTITY` でアクセスします。
+- `minecraft:block_entity`: ルートテーブルに関連付けられた BlockEntity。例: 壊された Block に関連付けられた BlockEntity。シュルカーボックスなどが、ドロップしたアイテムにインベントリを保存するのに使っています。`LootContextParams.BLOCK_ENTITY` でアクセスします。
 - `minecraft:explosion_radius`: 現在の文脈での爆発の半径。主に、ドロップに爆発による減少を適用するのに使われます。`LootContextParams.EXPLOSION_RADIUS` でアクセスします。
 - `minecraft:this_entity`: ルートテーブルに関連付けられたエンティティ。通常は倒されたエンティティです。`LootContextParams.THIS_ENTITY` でアクセスします。
 - `minecraft:damage_source`: ルートテーブルに関連付けられた[ダメージソース][damagesource]。通常は、エンティティを倒したダメージソースです。`LootContextParams.DAMAGE_SOURCE` でアクセスします。
@@ -248,7 +248,7 @@ List<ItemStack> containerList = table.fill(container, params, someSeed);
 ```
 
 :::danger
-`LootTable` は、さらに `#getRandomItemsRaw` というメソッドも公開しています。さまざまな `#getRandomItems` の形と異なり、`#getRandomItemsRaw` メソッドは[グローバルルートモディファイア][glm]を適用しません。このメソッドは、何をしているか理解している場合にのみ使ってください。
+`LootTable` は、さらに `#getRandomItemsRaw` というメソッドも公開しています。さまざまな `#getRandomItems` 系のメソッドとは異なり、`#getRandomItemsRaw` メソッドは[グローバルルートモディファイア][glm]を適用しません。このメソッドは、何をしているか理解している場合にのみ使ってください。
 :::
 
 ## データ生成 {#datagen}

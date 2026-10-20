@@ -1,6 +1,6 @@
 # ルート条件 {#loot-conditions}
 
-ルート条件は、現在のコンテキストで[ルートエントリ][entry]や[ルートプール][pool]を使うべきかどうかを判定するために使えます。どちらの場合も条件のリストを定義し、すべての条件を満たした場合にのみ、そのエントリやプールが使われます。データ生成では、目的の条件のインスタンスを渡して `#when` を呼び出すことで、`LootPoolEntryContainer.Builder<?>` または `LootPool.Builder` に条件を追加します。この記事では、利用できるルート条件を紹介します。独自のルート条件を作成する方法については、[カスタムルート条件][custom]を参照してください。
+ルート条件は、現在のコンテキストで[ルートエントリ][entry]や[ルートプール][pool]を使うべきかどうかを判定するために使えます。どちらの場合も条件のリストを定義し、すべての条件を満たした場合にのみ、そのエントリやプールが使われます。データ生成では、目的の条件のインスタンスを渡して `#when` を呼び出すことで、`LootPoolEntryContainer.Builder<?>` または `LootPool.Builder` に条件を追加します。この記事では、利用できるルート条件を紹介します。独自のルート条件を作成する方法については、[カスタムのルート条件][custom]を参照してください。
 
 ## `minecraft:inverted`
 
@@ -183,7 +183,7 @@
 
 ## `minecraft:block_state_property`
 
-この条件は、破壊されたブロックの状態において、指定したブロックステートのプロパティが指定した値になっているかを判定します。`minecraft:block_state` ルートパラメータが必要で、このパラメータが存在しない場合は常に失敗します。
+この条件は、破壊されたブロックステートにおいて、指定したブロックステートのプロパティが指定した値になっているかを判定します。`minecraft:block_state` ルートパラメータが必要で、このパラメータが存在しない場合は常に失敗します。
 
 ```json5
 {
@@ -199,11 +199,11 @@
 }
 ```
 
-データ生成では、ブロックを渡して `LootItemBlockStatePropertyCondition#hasBlockStateProperties` を呼び出し、この条件のビルダーを作成します。そのあと、ビルダーの `#setProperties` で目的のブロックステートのプロパティの値を設定できます。
+データ生成では、Block を渡して `LootItemBlockStatePropertyCondition#hasBlockStateProperties` を呼び出し、この条件のビルダーを作成します。そのあと、ビルダーの `#setProperties` で目的のブロックステートのプロパティの値を設定できます。
 
 ## `minecraft:survives_explosion`
 
-この条件は、ドロップをランダムに消滅させます。ドロップが残る確率は 1 / `explosion_radius` ルートパラメータです。これは、ビーコンやドラゴンの卵などごく一部の例外を除き、すべてのブロックのドロップで使われています。`minecraft:explosion_radius` ルートパラメータが必要で、このパラメータが存在しない場合は常に成功します。
+この条件は、ドロップをランダムに消滅させます。ドロップが残る確率は 1 / `explosion_radius` ルートパラメータです。これは、ビーコンやドラゴンの卵などごく一部の例外を除き、すべての Block のドロップで使われています。`minecraft:explosion_radius` ルートパラメータが必要で、このパラメータが存在しない場合は常に成功します。
 
 ```json5
 {
@@ -265,7 +265,7 @@
 
 ## `minecraft:entity_properties`
 
-この条件は、指定した `EntityPredicate` を[エンティティターゲット][entitytarget]に対して判定します。`EntityPredicate` では、エンティティの種類、ステータス効果、NBT の値、装備、位置などを判定できます。
+この条件は、指定した `EntityPredicate` を[エンティティの対象][entitytarget]に対して判定します。`EntityPredicate` では、エンティティの種類、モブ効果、NBT の値、装備、位置などを判定できます。
 
 ```json5
 {
@@ -282,7 +282,7 @@
 }
 ```
 
-データ生成では、エンティティターゲットを渡して `LootItemEntityPropertyCondition#entityPresent` を呼び出すか、エンティティターゲットと `EntityPredicate` を渡して `LootItemEntityPropertyCondition#hasProperties` を呼び出し、この条件のビルダーを作成します。
+データ生成では、エンティティの対象を渡して `LootItemEntityPropertyCondition#entityPresent` を呼び出すか、エンティティの対象と `EntityPredicate` を渡して `LootItemEntityPropertyCondition#hasProperties` を呼び出し、この条件のビルダーを作成します。
 
 ## `minecraft:damage_source_properties`
 
@@ -316,7 +316,7 @@
 
 ## `minecraft:entity_scores`
 
-この条件は、[エンティティターゲット][entitytarget]のスコアボードを判定します。指定したエンティティターゲットに対応するルートパラメータが必要で、このパラメータが存在しない場合は常に失敗します。
+この条件は、[エンティティの対象][entitytarget]のスコアボードを判定します。指定したエンティティの対象に対応するルートパラメータが必要で、このパラメータが存在しない場合は常に失敗します。
 
 ```json5
 {
@@ -339,7 +339,7 @@
 }
 ```
 
-データ生成では、エンティティターゲットを渡して `EntityHasScoreCondition#hasScores` を呼び出し、この条件のビルダーを作成します。そのあと、ビルダーの `#withScore` で必要なスコアを追加します。
+データ生成では、エンティティの対象を渡して `EntityHasScoreCondition#hasScores` を呼び出し、この条件のビルダーを作成します。そのあと、ビルダーの `#withScore` で必要なスコアを追加します。
 
 ## `minecraft:reference`
 
@@ -371,7 +371,7 @@
 
 ## `neoforge:can_item_perform_ability`
 
-この条件は、`tool` ルートコンテキストパラメータ（ `LootContextParams.TOOL` ）のアイテム（ 通常はブロックの破壊やエンティティの撃破に使われたアイテム ）が、指定した [`ItemAbility`][itemability] を実行できる場合にのみ true を返します。`minecraft:tool` ルートパラメータが必要で、このパラメータが存在しない場合は常に失敗します。
+この条件は、`tool` ルートコンテキストパラメータ（ `LootContextParams.TOOL` ）の Item（ 通常は Block の破壊やエンティティの撃破に使われた Item ）が、指定した [`ItemAbility`][itemability] を実行できる場合にのみ true を返します。`minecraft:tool` ルートパラメータが必要で、このパラメータが存在しない場合は常に失敗します。
 
 ```json5
 {
@@ -381,7 +381,7 @@
 }
 ```
 
-データ生成では、目的のアイテムアビリティの ID を渡して `CanItemPerformAbility#canItemPerformAbility` を呼び出し、この条件のビルダーを作成します。
+データ生成では、目的の ItemAbility の ID を渡して `CanItemPerformAbility#canItemPerformAbility` を呼び出し、この条件のビルダーを作成します。
 
 ## 関連項目 {#see-also}
 

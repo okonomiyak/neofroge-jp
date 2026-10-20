@@ -18,7 +18,7 @@ OpenAL( Minecraft のオーディオライブラリ )の実装上、サウンド
 
 ## `SoundEvent` の作成 {#creating-soundevents}
 
-`SoundEvent` は[登録されるオブジェクト][registration]です。つまり、`DeferredRegister` を通じてゲームに登録する必要があり、シングルトンです。
+`SoundEvent` は[登録されるオブジェクト][registration]です。つまり、`DeferredRegister` を通じてゲームに登録する必要があり、シングルトンでなければなりません。
 
 ```java
 public class MySoundsClass {

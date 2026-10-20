@@ -101,7 +101,7 @@ import TabItem from '@theme/TabItem';
 
 `(Modified Level) = (Base Level) + random.nextInt(e / 4 + 1) + random.nextInt(e / 4 + 1)`。ここで `e` はエンチャント適性の値です。
 
-この変更後のレベルは、ランダムに 15% 上下に調整され、最終的にエンチャントの選択に使われます。エンチャントが選ばれるには、このレベルがエンチャントのコストの範囲内に収まっている必要があります。
+この変更後のレベルは、ランダムに最大 15% 上下され、最終的にエンチャントの選択に使われます。エンチャントが選ばれるには、このレベルがエンチャントのコストの範囲内に収まっている必要があります。
 
 実際には、エンチャントの定義のコストの値が 30 を超えることがあり、時には大きく超えることもあるということです。たとえば、エンチャント適性が 10 の Item では、エンチャントテーブルはコストが最大 1.15 * ( 30 + 2 * ( 10 / 4 ) + 1 ) = 40 のエンチャントを生み出すことがあります。
 
@@ -170,7 +170,7 @@ int modifiedValue = atomicValue.get();
 実際に調整を行うには、用意した `Increment#add` メソッドを使います。これはラムダ式の中なので、値を変更するには、`AtomicInteger` のようなアトミックに更新できる型を使う必要があります。これにより、バニラと同じように、同じ Item で複数の `INCREMENT` コンポーネントを実行し、効果を重ねることもできます。
 
 ### `ConditionalEffect`
-型を `ConditionalEffect<?>` でラップすると、エンチャント効果コンポーネントを、指定した [LootContext][LootContext] に基づいて任意で効果を発揮させられます。
+型を `ConditionalEffect<?>` でラップすると、エンチャント効果コンポーネントが、指定した [LootContext][LootContext] に応じて条件付きで効果を発揮するようにできます。
 
 `ConditionalEffect` には `ConditionalEffect#matches(LootContext context)` があり、内部の `Optional<LootItemConditon>` に基づいて、効果の実行を許可すべきかどうかを返します。また、`LootItemCondition` のシリアライズとデシリアライズも処理します。
 

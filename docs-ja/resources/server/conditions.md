@@ -190,7 +190,7 @@ public static final Supplier<MapCodec<EntityTagEmptyCondition>> ENTITY_TAG_EMPTY
 - [`DataMapProvider`][datamapprovider]
 - [`GlobalLootModifierProvider`][glmprovider]
 
-条件自体については、`IConditionBuilder` インターフェースに、組み込みの各条件の種類について、対応する `ICondition` を返す static なヘルパーがあります。
+条件自体については、`IConditionBuilder` インターフェースが、組み込みの条件の種類ごとに、対応する `ICondition` を返す static なヘルパーを提供しています。
 
 [codec]: ../../datastorage/codecs
 [datagen]: ../index.md#data-generation

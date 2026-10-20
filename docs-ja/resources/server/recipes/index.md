@@ -6,20 +6,20 @@
 
 ## 用語 {#terminology}
 
-- **レシピ JSON**（ または**レシピファイル** ）は、`RecipeManager` によって読み込まれ、保持される JSON ファイルです。レシピの種類、入力と出力、さらに追加情報（ 例: 処理時間 ）などの情報を含みます。
+- **レシピ JSON**（ または**レシピファイル** ）は、`RecipeManager` によって読み込まれ、保持される JSON ファイルです。レシピタイプ、入力と出力、さらに追加情報（ 例: 処理時間 ）などの情報を含みます。
 - **`Recipe`** は、すべての JSON フィールドをコード上で表現したものに加えて、マッチングのロジック（ 「この入力はレシピに一致するか？」 ）やその他のいくつかのプロパティを保持します。
 - **`RecipeInput`** は、レシピに入力を提供する型です。`CraftingInput` や `SingleRecipeInput`（ かまどなど用 ）といった、いくつかのサブクラスがあります。
 - **レシピの材料**（ または単に**材料** ）は、レシピに対する 1 つの入力です（ 一方、`RecipeInput` は一般に、レシピの材料と照合される入力の集まりを表します ）。材料は非常に強力なシステムなので、[専用の記事][ingredients]で説明しています。
 - **`RecipeManager`** は、読み込まれたすべてのレシピを保持する、サーバー上のシングルトンのフィールドです。
 - **`RecipeSerializer`** は、基本的には [`MapCodec`][codec] と [`StreamCodec`][streamcodec] をまとめたラッパーで、どちらもシリアライズに使われます。
-- **`RecipeType`** は、`Recipe` に対応する、登録された種類です。主にレシピを種類で検索するときに使われます。経験則として、クラフト用のコンテナが異なれば、異なる `RecipeType` を使うべきです。たとえば、`minecraft:crafting` のレシピタイプは、`minecraft:crafting_shaped` と `minecraft:crafting_shapeless` のレシピシリアライザに加え、特殊なクラフトのシリアライザもカバーしています。
-- **レシピの[進捗][advancement]**は、レシピブックでレシピを解放する役割を持つ進捗です。必須ではなく、プレイヤーにはレシピビューア系の Mod が好まれて普段はあまり気にされませんが、[レシピのデータプロバイダ][datagen]が自動で生成してくれるので、そのまま使うことをおすすめします。
+- **`RecipeType`** は、`Recipe` に対応する、登録されたタイプです。主にレシピをタイプで検索するときに使われます。経験則として、クラフト用のコンテナが異なれば、異なる `RecipeType` を使うべきです。たとえば、`minecraft:crafting` のレシピタイプは、`minecraft:crafting_shaped` と `minecraft:crafting_shapeless` のレシピシリアライザに加え、特殊なクラフトのシリアライザもカバーしています。
+- **レシピの[進捗][advancement]**は、レシピブックでレシピを解放する役割を持つ進捗です。必須ではなく、プレイヤーはたいていレシピビューア系の Mod を使うのであまり顧みられませんが、[レシピのデータプロバイダ][datagen]が自動で生成してくれるので、そのまま使うことをおすすめします。
 - **`RecipeBuilder`** は、データ生成で JSON のレシピを作成するために使われます。
 - **レシピファクトリ**は、`RecipeBuilder` から `Recipe` を作成するために使われるメソッド参照です。コンストラクタへの参照、static なビルダーメソッド、またはこの目的のために専用に作られた関数型インターフェース（ 多くの場合 `Factory` という名前 ）のいずれかです。
 
 ## JSON の仕様 {#json-specification}
 
-レシピファイルの内容は、選択した種類によって大きく異なります。すべてのレシピファイルに共通するのは、`type` と [`neoforge:conditions`][conditions] のプロパティです。
+レシピファイルの内容は、選択したタイプによって大きく異なります。すべてのレシピファイルに共通するのは、`type` と [`neoforge:conditions`][conditions] のプロパティです。
 
 ```json5
 {
@@ -30,7 +30,7 @@
 }
 ```
 
-Minecraft が提供する種類の一覧は、[組み込みのレシピタイプの記事][builtin]で確認できます。Mod は[独自のレシピタイプを定義する][customrecipes]こともできます。
+Minecraft が提供するタイプの一覧は、[組み込みのレシピタイプの記事][builtin]で確認できます。Mod は[独自のレシピタイプを定義する][customrecipes]こともできます。
 
 ## レシピを使う {#using-recipes}
 
@@ -95,7 +95,7 @@ ItemStack result = optional
         .orElse(ItemStack.EMPTY);
 ```
 
-必要であれば、ある種類のすべてのレシピを順に処理することもできます。次のように行います。
+必要であれば、あるタイプのすべてのレシピを順に処理することもできます。次のように行います。
 
 ```java
 RecipeManager recipes = serverLevel.getRecipeManager();
@@ -131,7 +131,7 @@ public static void onAnvilUpdate(AnvilUpdateEvent event) {
 
 ### 醸造 {#brewing}
 
-[ステータス効果とポーションの記事の醸造の章][brewing]を参照してください。
+[モブ効果とポーションの記事の醸造の章][brewing]を参照してください。
 
 ## カスタムレシピ {#custom-recipes}
 
@@ -262,9 +262,9 @@ public class RightClickBlockRecipe implements Recipe<RightClickBlockInput> {
 
 ### レシピシリアライザ {#the-recipe-serializer}
 
-レシピシリアライザは 2 つのコーデック（ マップコーデックとストリームコーデック ）を提供し、それぞれ JSON との間、ネットワークとの間のシリアライズに使われます。このセクションではコーデックの仕組みについて詳しくは説明しません。詳しくは[マップコーデック][codec]と[ストリームコーデック][streamcodec]を参照してください。
+レシピシリアライザは 2 つの Codec（ マップ Codec とストリームコーデック ）を提供し、それぞれ JSON との間、ネットワークとの間のシリアライズに使われます。このセクションでは Codec の仕組みについて詳しくは説明しません。詳しくは[マップ Codec][codec]と[ストリームコーデック][streamcodec]を参照してください。
 
-レシピシリアライザはかなり大きくなることがあるため、バニラではこれを別のクラスに分けています。この慣例に従うことは推奨されますが、必須ではありません。小さなシリアライザは、レシピクラスのフィールド内で匿名クラスとして定義されることもよくあります。ここではよい慣例に従い、コーデックを保持する別のクラスを作成します。
+レシピシリアライザはかなり大きくなることがあるため、バニラではこれを別のクラスに分けています。この慣例に従うことは推奨されますが、必須ではありません。小さなシリアライザは、レシピクラスのフィールド内で匿名クラスとして定義されることもよくあります。ここではよい慣例に従い、Codec を保持する別のクラスを作成します。
 
 ```java
 // The generic parameter is our recipe class.
@@ -298,7 +298,7 @@ public class RightClickBlockRecipeSerializer implements RecipeSerializer<RightCl
 }
 ```
 
-種類と同じように、シリアライザを登録します。
+レシピタイプと同じように、シリアライザを登録します。
 
 ```java
 public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS =

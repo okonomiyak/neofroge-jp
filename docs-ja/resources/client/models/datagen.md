@@ -26,7 +26,7 @@
 
 ブロックモデルとアイテムモデルのデータ生成では、どちらも `ModelProvider` のサブクラスを使い、それぞれ `BlockModelProvider` と `ItemModelProvider` という名前です。アイテムモデルのデータ生成では `ItemModelProvider` を直接継承しますが、ブロックモデルのデータ生成では `BlockStateProvider` という基底クラスを使います。このクラスは内部に `BlockModelProvider` を持っており、`BlockStateProvider#models()` でアクセスできます。さらに、`BlockStateProvider` は独自の内部の `ItemModelProvider` も持っており、`BlockStateProvider#itemModels()` でアクセスできます。`ModelProvider` で最も重要なのは `getBuilder(String path)` メソッドで、指定した場所の `BlockModelBuilder`( または `ItemModelBuilder` )を返します。
 
-ただし、`ModelProvider` にはさまざまなヘルパーメソッドもあります。おそらく最も重要なヘルパーメソッドは `withExistingParent(String name, ResourceLocation parent)` で、( `getBuilder(name)` で )新しいビルダーを返し、指定した `ResourceLocation` をモデルの親に設定します。他によく使われるヘルパーとして、名前空間を `minecraft`、パスを指定した名前にした `ResourceLocation` を返す `mcLoc(String name)` と、同じことを `minecraft` の代わりにプロバイダの Mod ID( 通常は自分の Mod ID )で行う `modLoc(String name)` の 2 つがあります。さらに、ハーフブロック、階段、フェンス、ドアなどのよくあるものについて、`#withExistingParent` のショートカットとなるさまざまなヘルパーメソッドがあります。
+また、`ModelProvider` にはさまざまなヘルパーメソッドもあります。おそらく最も重要なヘルパーメソッドは `withExistingParent(String name, ResourceLocation parent)` で、( `getBuilder(name)` で )新しいビルダーを返し、指定した `ResourceLocation` をモデルの親に設定します。他によく使われるヘルパーとして、名前空間を `minecraft`、パスを指定した名前にした `ResourceLocation` を返す `mcLoc(String name)` と、同じことを `minecraft` の代わりにプロバイダの Mod ID( 通常は自分の Mod ID )で行う `modLoc(String name)` の 2 つがあります。さらに、ハーフブロック、階段、フェンス、ドアなどのよくあるものについて、`#withExistingParent` のショートカットとなるさまざまなヘルパーメソッドがあります。
 
 ### `ModelFile`
 
@@ -233,7 +233,7 @@ multipartBuilder.part()
 
 ## アイテムモデルのデータ生成 {#item-model-datagen}
 
-アイテムモデルの生成はかなり簡単です。主な理由は、`BlockStateProvider` のような中間のクラスを使わず、`ItemModelProvider` を直接扱うためです。これはもちろん、アイテムモデルにはブロックステートファイルに相当するものがなく、直接使われるからです。
+アイテムモデルの生成はかなり簡単です。主な理由は、`BlockStateProvider` のような中間のクラスを使わず、`ItemModelProvider` を直接扱うことです。もちろんこれは、アイテムモデルにはブロックステートファイルに相当するものがなく、モデルが直接使われるためです。
 
 上と同様に、クラスを作り、基底のプロバイダ( この場合は `ItemModelProvider` )を継承させます。`ModelProvider` のサブクラスの中に直接いるので、`models()` の呼び出しはすべて `this` になります( または省略されます )。
 

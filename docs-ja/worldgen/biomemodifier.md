@@ -5,14 +5,14 @@ import TabItem from '@theme/TabItem';
 
 バイオームモディファイアは、データ駆動でバイオームのさまざまな側面を変更できる仕組みです。PlacedFeature の追加や削除、モブのスポーンの追加や削除、気候の変更、葉や水の色の調整などができます。NeoForge には、プレイヤーと Mod 開発者の両方にとって、ほとんどの用途をカバーするデフォルトのバイオームモディファイアがいくつか用意されています。
 
-### おすすめの読むべきセクション {#recommended-section-to-read}
+### 読むことをおすすめするセクション {#recommended-section-to-read}
 
 - プレイヤーやパック制作者:
     - [バイオームモディファイアの適用](#applying-biome-modifiers)
     - [NeoForge 組み込みのバイオームモディファイア](#built-in-biome-modifiers)
 
 
-- 単純な追加や削除のバイオームの変更を行う Mod 開発者:
+- バイオームに単純な追加や削除を行う Mod 開発者:
     - [バイオームモディファイアの適用](#applying-biome-modifiers)
     - [NeoForge 組み込みのバイオームモディファイア](#built-in-biome-modifiers)
     - [バイオームモディファイアのデータ生成](#datagenning-biome-modifiers)
@@ -70,7 +70,7 @@ BUILDER.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, bootstrap -> {
 
 ### フィーチャーの追加 {#add-features}
 
-このバイオームモディファイアのタイプは、ワールド生成中にスポーンするよう、`PlacedFeature`( 木や鉱石など )をバイオームに追加します。このモディファイアは、フィーチャーを追加するバイオームの ID またはタグ、選択したバイオームに追加する `PlacedFeature` の ID またはタグ、そしてフィーチャーを生成する [`GenerationStep.Decoration`](#Available-Values-for-Decoration-Steps) を受け取ります。
+このバイオームモディファイアのタイプは、ワールド生成時に生成されるよう、`PlacedFeature`( 木や鉱石など )をバイオームに追加します。このモディファイアは、フィーチャーを追加するバイオームの ID またはタグ、選択したバイオームに追加する `PlacedFeature` の ID またはタグ、そしてフィーチャーを生成する [`GenerationStep.Decoration`](#Available-Values-for-Decoration-Steps) を受け取ります。
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -137,7 +137,7 @@ BUILDER.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, bootstrap -> {
 
 ### フィーチャーの削除 {#remove-features}
 
-このバイオームモディファイアのタイプは、ワールド生成中にスポーンしないよう、フィーチャー( 木や鉱石など )をバイオームから削除します。このモディファイアは、フィーチャーを削除するバイオームの ID またはタグ、選択したバイオームから削除する `PlacedFeature` の ID またはタグ、そしてフィーチャーを削除する [`GenerationStep.Decoration`](#Available-Values-for-Decoration-Steps) を受け取ります。
+このバイオームモディファイアのタイプは、ワールド生成時に生成されなくなるよう、フィーチャー( 木や鉱石など )をバイオームから削除します。このモディファイアは、フィーチャーを削除するバイオームの ID またはタグ、選択したバイオームから削除する `PlacedFeature` の ID またはタグ、そしてフィーチャーを削除する [`GenerationStep.Decoration`](#Available-Values-for-Decoration-Steps) を受け取ります。
 
 <Tabs>
 <TabItem value="json" label="JSON" default>
@@ -588,7 +588,7 @@ BUILDER.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, bootstrap -> {
 |           ステップ           | 説明                                                                             |
 |:------------------------:|:----------------------------------------------------------------------------------------|
 |     `raw_generation`     | 最初に実行されます。小さなエンド島のような、地形に近い特殊なフィーチャーに使われます。 |
-|         `lakes`          | 溶岩湖のような、池に近いフィーチャーをスポーンさせるためのものです。                             |
+|         `lakes`          | 溶岩湖のような、池に近いフィーチャーを生成するためのものです。                             |
 |  `local_modifications`   | ジオード、氷山、岩、鍾乳石など、地形の変更のためのものです。          |
 | `underground_structures` | ダンジョンや化石のような、地下の小さな構造物に近いフィーチャーに使われます。         |
 |   `surface_structures`   | 砂漠の井戸のような、地表にのみある小さな構造物に近いフィーチャーのためのものです。                    |
