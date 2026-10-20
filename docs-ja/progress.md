@@ -1,0 +1,8 @@
+# 進捗
+
+翻訳が完了したファイル(`docs-en/` からの相対パス)です。
+
+- gettingstarted/index.md
+- gettingstarted/modfiles.md
+- gettingstarted/structuring.md
+- gettingstarted/versioning.md
