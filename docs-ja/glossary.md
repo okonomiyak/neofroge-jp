@@ -145,3 +145,19 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | amplifier | 増幅値 |
 | potion item | ポーション系 Item |
 | brewing | 醸造 |
+| compound tag | compound タグ |
+| saved data | SavedData( 見出し )/ SD |
+| attachment type | アタッチメントタイプ |
+| serializer | シリアライザ |
+| persist | 永続化する |
+| codec | Codec |
+| encode / decode | エンコード / デコード |
+| lookup provider | ルックアッププロバイダ |
+| record ( codec ) | レコード( Codec ) |
+| transformer ( codec ) | 変換 |
+| range codec | 範囲 Codec |
+| string resolver | 文字列リゾルバ |
+| lazy initialized | 遅延初期化 |
+| dispatch ( codec ) | ディスパッチ |
+| primitive | プリミティブ |
+| overworld / nether / the end | オーバーワールド / ネザー / ジ・エンド |

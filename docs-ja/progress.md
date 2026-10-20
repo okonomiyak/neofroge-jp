@@ -18,3 +18,7 @@
 - items/tools.md
 - items/mobeffects.md
 - items/datacomponents.md
+- datastorage/nbt.md
+- datastorage/codecs.md
+- datastorage/attachments.md
+- datastorage/saveddata.md
