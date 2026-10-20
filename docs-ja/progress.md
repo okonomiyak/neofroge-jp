@@ -39,3 +39,4 @@
 - misc/gametest.md
 - advanced/accesstransformers.md
 - advanced/extensibleenums.md
+- worldgen/biomemodifier.md

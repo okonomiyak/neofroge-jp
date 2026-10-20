@@ -222,3 +222,10 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | extensible enum | 拡張可能な enum |
 | ordinal | 序数 |
 | transformer ( bytecode ) | トランスフォーマー |
+| biome modifier | バイオームモディファイア |
+| feature / placed feature | フィーチャー / `PlacedFeature` |
+| feature cycle violation | フィーチャーサイクル違反 |
+| spawn weight / spawn cost / spawn restriction | スポーンの重み / スポーンコスト / スポーン制限 |
+| carver ( legacy carver ) | カーバー( レガシーカーバー ) |
+| decoration step | 装飾ステップ |
+| phase | フェーズ |
