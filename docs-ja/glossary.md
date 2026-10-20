@@ -199,3 +199,88 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | composite | 複合 |
 | id mapper | ID マッパー |
 | holder / holder set | ホルダー / ホルダーセット |
+| resource location | リソースロケーション( コード上は `ResourceLocation` ) |
+| variant ( model ) | バリアント |
+| intern | インターン化する |
+| debug profiler | デバッグプロファイラ |
+| update checker / changelog | アップデートチェッカー / 変更履歴 |
+| configuration ( config ) | コンフィグ |
+| config screen | コンフィグ画面 |
+| validator | バリデータ |
+| key mapping / key binding | キー割り当て / キーバインド |
+| conflict context | 競合コンテキスト |
+| modifier key | 修飾キー |
+| game test | ゲームテスト |
+| structure template / structure block | 構造物テンプレート / ストラクチャーブロック |
+| assertion | アサーション |
+| batch | バッチ |
+| buildscript | ビルドスクリプト |
+| access modifier | アクセス修飾子 |
+| directive | ディレクティブ |
+| descriptor / method descriptor | ディスクリプタ / メソッドディスクリプタ |
+| inner class | 内部クラス |
+| extensible enum | 拡張可能な enum |
+| ordinal | 序数 |
+| transformer ( bytecode ) | トランスフォーマー |
+| biome modifier | バイオームモディファイア |
+| feature / placed feature | フィーチャー / `PlacedFeature` |
+| feature cycle violation | フィーチャーサイクル違反 |
+| spawn weight / spawn cost / spawn restriction | スポーンの重み / スポーンコスト / スポーン制限 |
+| carver ( legacy carver ) | カーバー( レガシーカーバー ) |
+| decoration step | 装飾ステップ |
+| phase | フェーズ |
+| assets / data | アセット / データ |
+| resource pack / data pack | リソースパック / データパック( Datapack ) |
+| data generator / datagen | データジェネレーター / データ生成 |
+| command line argument | コマンドライン引数 |
+| component ( text ) | コンポーネント( コード上は `Component` ) |
+| style / text formatting | スタイル / テキストの書式 |
+| language file / translation key | 言語ファイル / 翻訳キー |
+| animated texture | アニメーションテクスチャ |
+| particle / particle description | パーティクル / パーティクルの記述 |
+| particle provider | パーティクルプロバイダ |
+| sound event / sound category / sound definition | サウンドイベント / サウンドカテゴリ / サウンド定義 |
+| attenuation | 減衰 |
+| merge | マージ |
+| model / item model / block model | モデル / アイテムモデル / ブロックモデル |
+| parent ( model ) | 親モデル |
+| element ( model ) | 要素 |
+| render type | 描画タイプ |
+| ambient occlusion | アンビエントオクルージョン |
+| mipmapping | ミップマップ |
+| tint / tint index / color handler | 着色 / 着色インデックス / カラーハンドラ |
+| override ( item model ) | オーバーライド |
+| root transform | ルート変換 |
+| perspective | 視点 |
+| quad | 四角形 |
+| baked model | ベイク済みモデル |
+| custom model loader | カスタムモデルローダー |
+| geometry | ジオメトリ |
+| composite model | 複合モデル |
+| damage type / damage source | ダメージタイプ / ダメージソース |
+| tag / tag provider | タグ / タグプロバイダ |
+| advancement / advancement tree / root advancement | 進捗 / 進捗ツリー / ルート進捗 |
+| criterion / criteria trigger | 条件 / 条件のトリガー |
+| toast | トースト通知 |
+| data load condition | データの読み込み条件 |
+| data map | データマップ |
+| merger / remover ( data map ) | マージャー / リムーバー |
+| enchantment | エンチャント |
+| enchantment effect component | エンチャント効果コンポーネント |
+| enchantability | エンチャント適性 |
+| value effect / location based effect / entity effect | 値の効果 / 位置に基づく効果 / エンティティの効果 |
+| enchantment names | 日本語版 Minecraft の名称に合わせる( 例: Sharpness → ダメージ増加、Mending → 修繕 ) |
+| loot table / loot pool / loot entry | ルートテーブル / ルートプール / ルートエントリ |
+| loot condition / loot function | ルート条件 / ルート関数 |
+| number provider | 数値プロバイダ |
+| loot parameter / loot context / loot context param set | ルートパラメータ / ルートコンテキスト / ルートコンテキストのパラメータセット |
+| global loot modifier ( GLM ) | グローバルルートモディファイア( GLM ) |
+| recipe / recipe type / recipe serializer / recipe input | レシピ / レシピタイプ / レシピシリアライザ / レシピの入力 |
+| ingredient | 材料 |
+| shaped / shapeless crafting | 定形クラフト / 不定形クラフト |
+| recipe factory / recipe builder | レシピファクトリ / レシピビルダー |
+| predicate ( Minecraft Wiki ) | プレディケート |
+| item modifier | アイテムモディファイア |
+| entity target ( loot ) | エンティティの対象 |
+| ingredient type | 材料の種類 |
+| map codec | マップ Codec |

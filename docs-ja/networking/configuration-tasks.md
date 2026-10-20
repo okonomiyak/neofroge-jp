@@ -128,6 +128,6 @@ public void onAck(AckPayload payload, IPayloadContext context) {
 
 ここで、`onAck` は、クライアントが送ったペイロードのハンドラです。
 
-## ログイン処理の停止 {#stalling-the-login-process}
+## ログイン処理の停滞 {#stalling-the-login-process}
 
 設定の完了が通知されないと、サーバーは永遠に待ち続け、クライアントはいつまでもゲームに参加できません。そのため、コンフィギュレーションタスクの完了は必ず通知することが重要です。ただし、コンフィギュレーションタスクが失敗した場合は、クライアントを切断してもかまいません。

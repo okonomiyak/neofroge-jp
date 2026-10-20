@@ -5,9 +5,9 @@ sidebar_position: 1
 
 登録とは、Mod のオブジェクト( [Item][item]、[Block][block]、エンティティなど )をゲームに認識させる処理です。登録は重要です。登録しなければ、ゲームはそれらのオブジェクトをまったく認識できず、説明のつかない挙動やクラッシュの原因になります。
 
-Registry とは、簡単に言えば、Registry 名( 後述 )と登録されたオブジェクト( Registry エントリと呼ばれることが多い )を対応付けるマップのラッパーです。Registry 名は同じ Registry 内で一意である必要がありますが、同じ Registry 名が複数の Registry に存在してもかまいません。最もよくある例は、( `BLOCKS` Registry にある )ブロックが、同じ Registry 名を持つアイテムの形態を( `ITEMS` Registry に )持つ場合です。
+Registry とは、簡単に言えば、Registry 名( 後述 )と登録されたオブジェクト( Registry エントリと呼ばれることが多い )を対応付けるマップのラッパーです。Registry 名は同じ Registry 内で一意である必要がありますが、同じ Registry 名が複数の Registry に存在してもかまいません。最もよくある例は、( `BLOCKS` Registry にある ) Block が、同じ Registry 名を持つ Item の形態を( `ITEMS` Registry に )持つ場合です。
 
-登録されたオブジェクトはすべて、Registry 名と呼ばれる一意の名前を持ちます。この名前は [`ResourceLocation`][resloc] で表されます。たとえば、土ブロックの Registry 名は `minecraft:dirt`、ゾンビの Registry 名は `minecraft:zombie` です。Mod のオブジェクトはもちろん `minecraft` 名前空間を使わず、代わりにその Mod の ID を使います。
+登録されたオブジェクトはすべて、Registry 名と呼ばれる一意の名前を持ちます。この名前は [`ResourceLocation`][resloc] で表されます。たとえば、土ブロックの Registry 名は `minecraft:dirt`、ゾンビの Registry 名は `minecraft:zombie` です。Mod のオブジェクトはもちろん `minecraft` 名前空間を使わず、代わりにその Mod の Mod ID を使います。
 
 ## バニラと Mod の違い {#vanilla-vs-modded}
 
@@ -15,7 +15,7 @@ NeoForge の Registry システムにおける設計判断の一部を理解す�
 
 Registry は一般に[シングルトン][singleton]を登録します。( 訳注: シングルトンとは、ゲーム全体でインスタンスが 1 つしか存在しないオブジェクトのことです )つまり、すべての Registry エントリはちょうど 1 つだけ存在します。たとえば、ゲーム中で目にする石ブロックはすべて、実際には同じ石ブロックが何度も表示されているものです。石ブロックが必要な場合は、登録された Block のインスタンスを参照して取得できます。
 
-Minecraft はすべてのブロックを `Blocks` クラスで登録します。`register` メソッドを通じて `Registry#register()` が呼ばれ、その第 1 引数には `BuiltInRegistries.BLOCK` にある Block の Registry が渡されます。すべてのブロックが登録されると、Minecraft はブロックの一覧に基づいてさまざまなチェックを行います。たとえば、すべてのブロックにモデルが読み込まれていることを確認するセルフチェックです。
+Minecraft はすべての Block を `Blocks` クラスで登録します。`register` メソッドを通じて `Registry#register()` が呼ばれ、その第 1 引数には `BuiltInRegistries.BLOCK` にある Block の Registry が渡されます。すべての Block が登録されると、Minecraft は Block の一覧に基づいてさまざまなチェックを行います。たとえば、すべての Block にモデルが読み込まれていることを確認するセルフチェックです。
 
 これがすべてうまくいく主な理由は、`Blocks` が Minecraft によって十分早い段階でクラスロードされるからです。Mod は Minecraft によって自動でクラスロードされないため、回避策が必要になります。
 
@@ -72,7 +72,7 @@ public ExampleMod(IEventBus modBus) {
 ```
 
 :::info
-ブロックとアイテムには、ヘルパーメソッドを備えた `DeferredRegister` の特化版があります。それぞれ [`DeferredRegister.Blocks`][defregblocks] と [`DeferredRegister.Items`][defregitems] です。
+Block と Item には、ヘルパーメソッドを備えた `DeferredRegister` の特化版があります。それぞれ [`DeferredRegister.Blocks`][defregblocks] と [`DeferredRegister.Items`][defregitems] です。
 :::
 
 ### `RegisterEvent`
@@ -117,7 +117,7 @@ BuiltInRegistries.BLOCK.containsKey(ResourceLocation.fromNamespaceAndPath("minec
 BuiltInRegistries.BLOCK.containsKey(ResourceLocation.fromNamespaceAndPath("create", "brass_ingot")); // true only if Create is installed
 ```
 
-最後の例が示すように、これはどの Mod ID でも使えるので、他の Mod の特定のアイテムが存在するかを確認するのに最適な方法です。
+最後の例が示すように、これはどの Mod ID でも使えるので、他の Mod の特定の Item が存在するかを確認するのに最適な方法です。
 
 最後に、Registry 内のすべてのエントリを、キーまたはエントリ( エントリには Java の `Map.Entry` 型を使います )で反復処理することもできます。
 
@@ -135,7 +135,7 @@ for (Map.Entry<ResourceKey<Block>, Block> entry : BuiltInRegistries.BLOCK.entryS
 :::
 
 :::danger
-問い合わせの操作を安全に使えるのは、登録が完了した後だけです。**登録の最中に Registry を問い合わせてはいけません!**
+問い合わせの操作を安全に使えるのは、登録が完了した後だけです。**登録の最中に Registry を問い合わせてはいけません！**
 :::
 
 ## カスタム Registry {#custom-registries}
@@ -186,7 +186,7 @@ public static void register(RegisterEvent event) {
 
 ## Datapack Registry {#datapack-registries}
 
-Datapack Registry( 動的 Registry、または主な用途から worldgen Registry とも呼ばれます )は特殊な Registry で、ゲームの起動時ではなくワールドの読み込み時に、[Datapack][datapack] の JSON からデータを読み込みます( 名前の由来です )。デフォルトの Datapack Registry には、いくつかの例外を除き、worldgen の Registry のほとんどが含まれます。
+Datapack Registry( 動的 Registry、または主な用途から worldgen Registry とも呼ばれます )は特殊な Registry で、ゲームの起動時ではなくワールドの読み込み時に、[Datapack][datapack] の JSON からデータを読み込みます( これが名前の由来です )。デフォルトの Datapack Registry には、特に worldgen の Registry のほとんどが含まれ、ほかにもいくつかあります。
 
 Datapack Registry では、その中身を JSON ファイルで指定できます。つまり、コードは必要ありません( JSON ファイルを自分で書きたくない場合の[データ生成][datagen]は別です )。すべての Datapack Registry には、シリアライズに使われる [`Codec`][codec] が関連付けられており、各 Registry の ID によって Datapack 内のパスが決まります。
 

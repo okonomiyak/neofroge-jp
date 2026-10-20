@@ -201,7 +201,7 @@ if (handler != null) {
 
 **キャッシュはガベージコレクタによって自動で破棄されるため、登録を解除する必要はありません。**
 
-capability のオブジェクトが変わったときに通知を受け取ることもできます!これには、capability が変わった場合( `oldHandler != newHandler` )、利用できなくなった場合( `null` )、再び利用できるようになった場合( `null` でなくなった )が含まれます。
+capability のオブジェクトが変わったときに通知を受け取ることもできます！これには、capability が変わった場合( `oldHandler != newHandler` )、利用できなくなった場合( `null` )、再び利用できるようになった場合( `null` でなくなった )が含まれます。
 
 その場合は、2 つの追加の引数を渡してキャッシュを作成する必要があります。
 
@@ -247,7 +247,7 @@ BlockEntity を持たない Block の例は、`ComposterBlock.java` ファイル
 
 ## capability の登録 {#registering-capabilities}
 
-capability を最終的に提供するのは、capability の_プロバイダ_です。capability プロバイダは、capability のインスタンスを返すか、capability を提供できない場合は `null` を返す関数です。プロバイダは、次のものに固有です。
+capability を最終的に提供するのは、capability の*プロバイダ*です。capability プロバイダは、capability のインスタンスを返すか、capability を提供できない場合は `null` を返す関数です。プロバイダは、次のものに固有です。
 
 - 提供の対象となる capability
 - 提供の対象となる Block のインスタンス、BlockEntity タイプ、エンティティタイプ、Item のインスタンス

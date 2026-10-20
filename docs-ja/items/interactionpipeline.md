@@ -60,7 +60,7 @@ sidebar_position: 1
 
 ## `Item#useOn`
 
-操作を成功とみなすが、腕を振らせたくない、または `ITEM_USED` の統計ポイントを加算したくない場合は、`InteractionResult.CONSUME_PARTIAL` を使います。
+操作を成功とみなすが、腕を振らせず、`ITEM_USED` の統計ポイントも加算したくない場合は、`InteractionResult.CONSUME_PARTIAL` を使います。
 
 ## `Item#use`
 

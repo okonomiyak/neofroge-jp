@@ -158,7 +158,7 @@ entity.removeEffect(MobEffects.REGENERATION);
 public static final Supplier<Potion> MY_POTION = POTIONS.register("my_potion", () -> new Potion(new MobEffectInstance(MY_MOB_EFFECT, 3600)));
 ```
 
-`new Potion` の引数は可変長引数である点に注意してください。つまり、ポーションには好きなだけ効果を追加できます。また、空のポーション、つまり効果を何も持たないポーションも作れます。`new Potion()` を呼び出すだけです!( ちなみに、バニラはこの方法で `awkward`( 奇妙なポーション )を追加しています。 )
+`new Potion` の引数は可変長引数である点に注意してください。つまり、ポーションには好きなだけ効果を追加できます。また、空のポーション、つまり効果を何も持たないポーションも作れます。`new Potion()` を呼び出すだけです!( ちなみに、バニラはこの方法で `awkward` のポーションを追加しています。 )
 
 ポーションの名前は、コンストラクタの最初の引数として渡せます。これは翻訳に使われます。たとえば、バニラの延長版や強化版のポーションは、これを使って基本版と同じ名前にしています。名前は必須ではなく、省略した場合は Registry から名前が問い合わせられます。
 
