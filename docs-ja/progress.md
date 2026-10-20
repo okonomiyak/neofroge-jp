@@ -9,3 +9,7 @@
 - concepts/sides.md
 - concepts/events.md
 - concepts/registries.md
+- blocks/index.md
+- blocks/states.md
+- blockentities/index.md
+- blockentities/ber.md

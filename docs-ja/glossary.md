@@ -93,3 +93,26 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | tick | tick |
 | desynchronization | 非同期 |
 | serialize / deserialize | シリアライズ / デシリアライズ |
+| blockstate / block state | ブロックステート |
+| blockstate property | ブロックステートのプロパティ |
+| default state | デフォルトの状態 |
+| update flags | 更新フラグ |
+| block type | Block タイプ |
+| block entity type | BlockEntity タイプ |
+| block item | `BlockItem`(コード名のまま) |
+| pipeline | パイプライン |
+| ticking / ticker | tick 処理 / ティッカー |
+| scheduled tick / random tick | スケジュールされた tick / ランダム tick |
+| feature flag | フィーチャーフラグ |
+| world border | ワールドボーダー |
+| drop (items) | ドロップ |
+| harvest | 収穫 |
+| destroy progress | 破壊進行度 |
+| sync / syncing | 同期 |
+| update tag / update packet | 更新タグ / 更新パケット |
+| dirty (chunk) | ダーティ |
+| data attachment | データアタッチメント |
+| block entity renderer (BER) | BlockEntityRenderer (BER) |
+| (static) baked model | (静的な)ベイク済みモデル |
+| immutable | イミュータブル(不変) |
+| networking | ネットワーク |
