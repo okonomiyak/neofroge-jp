@@ -161,3 +161,20 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | dispatch ( codec ) | ディスパッチ |
 | primitive | プリミティブ |
 | overworld / nether / the end | オーバーワールド / ネザー / ジ・エンド |
+| menu / menu type | メニュー / メニューのタイプ( コード上は `MenuType` ) |
+| data holder | データホルダー |
+| container id | コンテナ ID |
+| slot / data slot | スロット / データスロット |
+| hotbar | ホットバー |
+| quick move ( shift-click ) | クイック移動( Shift クリック ) |
+| screen | 画面 |
+| container screen | コンテナ画面 |
+| widget | ウィジェット |
+| relative coordinates | 相対座標 |
+| colored rectangle | 色付きの矩形 |
+| blit / blit offset | ブリット / ブリットオフセット |
+| sprite / texture atlas | スプライト / テクスチャアトラス |
+| tooltip | ツールチップ |
+| narration | ナレーション |
+| focus | フォーカス |
+| teardown | 後片付け |

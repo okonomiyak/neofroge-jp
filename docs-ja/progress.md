@@ -22,3 +22,5 @@
 - datastorage/codecs.md
 - datastorage/attachments.md
 - datastorage/saveddata.md
+- gui/menus.md
+- gui/screens.md
