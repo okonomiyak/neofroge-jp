@@ -31,3 +31,9 @@
 - networking/streamcodecs.md
 - networking/configuration-tasks.md
 - networking/entities.md
+- misc/resourcelocation.md
+- misc/debugprofiler.md
+- misc/updatechecker.md
+- misc/config.md
+- misc/keymappings.md
+- misc/gametest.md

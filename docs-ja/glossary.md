@@ -199,3 +199,19 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | composite | 複合 |
 | id mapper | ID マッパー |
 | holder / holder set | ホルダー / ホルダーセット |
+| resource location | リソースロケーション( コード上は `ResourceLocation` ) |
+| variant ( model ) | バリアント |
+| intern | インターン化する |
+| debug profiler | デバッグプロファイラ |
+| update checker / changelog | アップデートチェッカー / 変更履歴 |
+| configuration ( config ) | コンフィグ |
+| config screen | コンフィグ画面 |
+| validator | バリデータ |
+| key mapping / key binding | キー割り当て / キーバインド |
+| conflict context | 競合コンテキスト |
+| modifier key | 修飾キー |
+| game test | ゲームテスト |
+| structure template / structure block | 構造物テンプレート / ストラクチャーブロック |
+| assertion | アサーション |
+| batch | バッチ |
+| buildscript | ビルドスクリプト |
