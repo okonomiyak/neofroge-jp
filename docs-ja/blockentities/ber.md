@@ -1,6 +1,6 @@
 # BlockEntityRenderer {#blockentityrenderer}
 
-`BlockEntityRenderer`(よく BER と略されます)は、[静的なベイク済みモデル][model](JSON、OBJ など)では表現できない方法で [Block][block] を描画するために使います。たとえば、チェストのような Block で、コンテナの中身を動的に描画するのに使えます。BlockEntityRenderer を使うには、その Block が [`BlockEntity`][blockentity] を持っている必要があります。Block が他にデータを何も保存しない場合でも同様です。
+`BlockEntityRenderer`(よく BER と略されます)は、[静的なベイク済みモデル][model]（JSON、OBJ など）では表現できない方法で [Block][block] を描画するために使います。たとえば、チェストのような Block で、コンテナの中身を動的に描画するのに使えます。BlockEntityRenderer を使うには、その Block が [`BlockEntity`][blockentity] を持っている必要があります。Block が他にデータを何も保存しない場合でも同様です。
 
 BER を作るには、`BlockEntityRenderer` を継承したクラスを作成します。このクラスは、Block の `BlockEntity` クラスを指定するジェネリクスの型引数を取り、それが BER の `render` メソッドの引数の型として使われます。
 

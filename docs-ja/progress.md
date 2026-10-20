@@ -13,3 +13,8 @@
 - blocks/states.md
 - blockentities/index.md
 - blockentities/ber.md
+- items/index.md
+- items/interactionpipeline.md
+- items/tools.md
+- items/mobeffects.md
+- items/datacomponents.md

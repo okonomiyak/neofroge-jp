@@ -116,3 +116,26 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | (static) baked model | (静的な)ベイク済みモデル |
 | immutable | イミュータブル(不変) |
 | networking | ネットワーク |
+| item stack | アイテムスタック |
+| item entity | アイテムエンティティ |
+| data component | データコンポーネント |
+| component map / component holder | コンポーネントマップ / コンポーネントホルダー |
+| prototype / patch map | プロトタイプ / パッチマップ |
+| durability | 耐久値 |
+| max stack size | 最大スタック数 |
+| crafting remainder | クラフト後の残り |
+| rarity | レア度 |
+| food / nutrition / saturation | 食べ物 / 満腹度 / 隠し満腹度 |
+| creative tab | クリエイティブタブ |
+| mutable / mutability | ミュータブル(可変) / 可変性 |
+| interaction pipeline | インタラクションパイプライン |
+| definitive result | 確定的な結果 |
+| main hand / off hand | メインハンド / オフハンド |
+| tool set / tier | 道具のセット / ティア(コード上は `Tier`) |
+| item ability | `ItemAbility`(コード名のまま) |
+| armor material | 防具の素材(コード上は `ArmorMaterial`) |
+| attribute modifier | 属性修飾子 |
+| mob effect / instant effect | モブ効果 / 即時効果 |
+| amplifier | 増幅値 |
+| potion item | ポーション系 Item |
+| brewing | 醸造 |
