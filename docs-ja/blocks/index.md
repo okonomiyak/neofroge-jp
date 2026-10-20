@@ -36,7 +36,7 @@ level.getBlockState(position) // returns the blockstate placed in the given leve
 
 - Block は、Registry が凍結されていない間に作成する必要があります。NeoForge が Registry の凍結を解除し、後で再び凍結します。そのため、Block を作成できるのは登録の間だけです。
 - Registry が再び凍結された後に Block を作成または登録しようとすると、ゲームがクラッシュして `null` の Block が報告されます。これは非常にわかりにくいものです。
-- それでも宙に浮いた Block のインスタンスができてしまった場合、ゲームは同期や保存の際にそれを認識できず、空気に置き換えます。
+- それでも、どこにも登録されていない Block のインスタンスができてしまった場合、ゲームは同期や保存の際にそれを認識できず、空気に置き換えます。
 :::
 
 ## Block の作成 {#creating-blocks}
