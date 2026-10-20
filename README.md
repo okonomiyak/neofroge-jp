@@ -1,4 +1,4 @@
-# NeoForge ドキュメント 日本語訳( 非公式 )
+# NeoForge 1.21.1 ドキュメント 日本語訳( 非公式 )
 
 [NeoForge 公式ドキュメント](https://github.com/neoforged/Documentation)( Minecraft 1.21.1 版 )の**非公式**の日本語訳です。NeoForge プロジェクトとは関係がありません。
 
