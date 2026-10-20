@@ -6,7 +6,7 @@ Block に異なる状態を持たせたい場面はよくあります。たと�
 
 ## ブロックステートのプロパティ {#blockstate-properties}
 
-ブロックステートは、プロパティの仕組みを使います。Block は、さまざまな型のプロパティを複数持てます。たとえば、エンドポータルフレームには 2 つのプロパティがあります。目がはまっているかどうか(`eye`、2 通り)と、どの向きに設置されているか(`facing`、4 通り)です。つまり、エンドポータルフレームには全部で 8 通り(2 × 4)のブロックステートがあります。
+ブロックステートは、プロパティの仕組みを使います。Block は、さまざまな型のプロパティを複数持てます。たとえば、エンドポータルフレームには 2 つのプロパティがあります。目がはまっているかどうか( `eye`、2 通り )と、どの向きに設置されているか( `facing`、4 通り )です。つまり、エンドポータルフレームには全部で 8 通り( 2 × 4 )のブロックステートがあります。
 
 ```
 minecraft:end_portal_frame[facing=north,eye=false]
@@ -29,7 +29,7 @@ Block と同じく、すべての `BlockState` はメモリ上にちょうど 1 
 
 ### ブロックステートか、別の Block か {#blockstates-vs-separate-blocks}
 
-よい目安は、**名前が異なるなら別の Block にすべき**というものです。たとえば椅子の Block を作る場合、椅子の向きはプロパティにすべきですが、木材の種類が違うものは別々の Block に分けるべきです。つまり、木材の種類ごとに椅子の Block を 1 つずつ作り、それぞれの椅子の Block が 4 つのブロックステート(向きごとに 1 つ)を持つことになります。
+よい目安は、**名前が異なるなら別の Block にすべき**というものです。たとえば椅子の Block を作る場合、椅子の向きはプロパティにすべきですが、木材の種類が違うものは別々の Block に分けるべきです。つまり、木材の種類ごとに椅子の Block を 1 つずつ作り、それぞれの椅子の Block が 4 つのブロックステート( 向きごとに 1 つ )を持つことになります。
 
 ### ブロックステートか、[BlockEntity][blockentity] か {#blockstates-vs-block-entities}
 
@@ -37,7 +37,7 @@ Block と同じく、すべての `BlockState` はメモリ上にちょうど 1 
 
 ブロックステートと BlockEntity は組み合わせて使えます。たとえばチェストは、向き、水浸しかどうか、ラージチェストになっているかどうかといったものにはブロックステートのプロパティを使い、インベントリの保存、現在開いているかどうか、ホッパーとのやりとりは BlockEntity で扱っています。
 
-「ブロックステートには、いくつ以上の状態があると多すぎるのか」という問いに決定的な答えはありません。ただ、8〜9 ビットを超えるデータ(つまり数百を超える状態)が必要なら、代わりに BlockEntity を使うことをおすすめします。
+「ブロックステートには、いくつ以上の状態があると多すぎるのか」という問いに決定的な答えはありません。ただ、8〜9 ビットを超えるデータ( つまり数百を超える状態 )が必要なら、代わりに BlockEntity を使うことをおすすめします。
 
 ## ブロックステートの実装 {#implementing-blockstates}
 
@@ -52,7 +52,7 @@ Block と同じく、すべての `BlockState` はメモリ上にちょうど 1 
 - `EnumProperty<E extends Enum<E>>`
     - `Property<E>` を実装します。Enum クラスの値を取るプロパティを定義します。
     - `EnumProperty#create(String propertyName, Class<E> enumClass)` を呼び出して作成します。
-    - Enum の値の一部だけ(例: 16 種類の `DyeColor` のうち 4 つ)を使うこともできます。`EnumProperty#create` のオーバーロードを参照してください。
+    - Enum の値の一部だけ( 例: 16 種類の `DyeColor` のうち 4 つ )を使うこともできます。`EnumProperty#create` のオーバーロードを参照してください。
 - `DirectionProperty`
     - `EnumProperty<Direction>` を継承します。`Direction` を取るプロパティを定義します。
     - `DirectionProperty#create(String propertyName)` を呼び出して作成します。
@@ -111,14 +111,14 @@ public class EndPortalFrameBlock extends Block {
 Direction direction = endPortalFrameBlockState.getValue(EndPortalFrameBlock.FACING);
 ```
 
-値の組み合わせが異なる `BlockState` を得たい場合は、既存のブロックステートに対して、プロパティとその値を渡して `BlockState#setValue(Property<T>, T)` を呼び出すだけです。レバーの例では、次のようになります。(訳注: 原文は「レバー」ですが、コード例はエンドポータルフレームのものです)
+値の組み合わせが異なる `BlockState` を得たい場合は、既存のブロックステートに対して、プロパティとその値を渡して `BlockState#setValue(Property<T>, T)` を呼び出すだけです。レバーの例では、次のようになります。( 訳注: 原文は「レバー」ですが、コード例はエンドポータルフレームのものです )
 
 ```java
 endPortalFrameBlockState = endPortalFrameBlockState.setValue(EndPortalFrameBlock.FACING, Direction.SOUTH);
 ```
 
 :::note
-`BlockState` はイミュータブル(不変)です。つまり、`#setValue(Property<T>, T)` を呼び出しても、実際にブロックステートが変更されるわけではありません。内部で検索が行われ、要求したブロックステートのオブジェクトが返されます。それは、まさにそのプロパティ値の組み合わせを持つ、ただ 1 つのオブジェクトです。そのため、`state#setValue` を呼び出すだけで、結果を変数に(たとえば `state` に)保存しなければ、何も起きません。
+`BlockState` はイミュータブル( 不変 )です。つまり、`#setValue(Property<T>, T)` を呼び出しても、実際にブロックステートが変更されるわけではありません。内部で検索が行われ、要求したブロックステートのオブジェクトが返されます。それは、まさにそのプロパティ値の組み合わせを持つ、ただ 1 つのオブジェクトです。そのため、`state#setValue` を呼び出すだけで、結果を変数に( たとえば `state` に )保存しなければ、何も起きません。
 :::
 
 レベルから `BlockState` を取得するには、`Level#getBlockState(BlockPos)` を使います。
@@ -129,7 +129,7 @@ endPortalFrameBlockState = endPortalFrameBlockState.setValue(EndPortalFrameBlock
 
 `int` の引数は意味がすぐにはわからないため、少し説明が必要です。これは更新フラグと呼ばれるものを表します。
 
-更新フラグを正しく設定しやすいように、`Block` には `UPDATE_` で始まる `int` 定数がいくつかあります。これらを組み合わせたい場合は、ビット単位の OR で結合できます(例: `Block.UPDATE_NEIGHBORS | Block.UPDATE_CLIENTS`)。
+更新フラグを正しく設定しやすいように、`Block` には `UPDATE_` で始まる `int` 定数がいくつかあります。これらを組み合わせたい場合は、ビット単位の OR で結合できます( 例: `Block.UPDATE_NEIGHBORS | Block.UPDATE_CLIENTS` )。
 
 - `Block.UPDATE_NEIGHBORS` は、隣接する Block に更新を送ります。具体的には `Block#neighborChanged` を呼び出し、そこから多くのメソッドが呼ばれます。その多くは何らかの形でレッドストーンに関係しています。
 - `Block.UPDATE_CLIENTS` は、Block の更新をクライアントに同期します。

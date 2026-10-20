@@ -3,7 +3,7 @@ const {themes} = require('prism-react-renderer');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'NeoForge ドキュメント 日本語訳(非公式)',
+  title: 'NeoForge 1.21.1 ドキュメント 日本語訳( 非公式 )',
   tagline: 'NeoForge 1.21.1 ドキュメントの非公式日本語訳',
   url: 'https://okonomiyak.github.io',
   baseUrl: '/neofroge-jp/',
@@ -34,16 +34,24 @@ const config = {
           editUrl: 'https://github.com/okonomiyak/neofroge-jp/edit/main/',
         },
         blog: false,
-        theme: {},
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
       }),
     ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      announcementBar: {
+        id: 'version-1-21-1',
+        content: 'このサイトは <b>Minecraft 1.21.1</b> 向け NeoForge ドキュメントの非公式日本語訳です。他のバージョンでは内容が異なることがあります。',
+        isCloseable: false,
+      },
       navbar: {
-        title: 'NeoForge ドキュメント(日本語訳・非公式)',
+        title: 'NeoForge ドキュメント( 日本語訳・非公式 )',
         items: [
+          {type: 'html', value: '<span class="version-badge">Minecraft 1.21.1</span>', position: 'left'},
           {to: '/glossary', label: '用語集', position: 'left'},
           {href: 'https://docs.neoforged.net/docs/1.21.1/gettingstarted/', label: '原文', position: 'right'},
           {href: 'https://github.com/okonomiyak/neofroge-jp', label: 'GitHub', position: 'right'},
@@ -52,7 +60,7 @@ const config = {
       footer: {
         style: 'dark',
         copyright:
-          '非公式の日本語訳です。原文: <a href="https://github.com/neoforged/Documentation">neoforged/Documentation</a>(MIT License)。訳の誤りは訳者の責任です。正確な内容は原文を参照してください。',
+          'NeoForge 1.21.1 ドキュメントの非公式の日本語訳です。原文: <a href="https://github.com/neoforged/Documentation/tree/main/versioned_docs/version-1.21.1">neoforged/Documentation( version-1.21.1 )</a>( MIT License )。訳の誤りは訳者の責任です。正確な内容は原文を参照してください。',
       },
       prism: {
         theme: themes.github,

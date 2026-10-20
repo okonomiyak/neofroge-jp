@@ -1,6 +1,6 @@
 # BlockEntityRenderer {#blockentityrenderer}
 
-`BlockEntityRenderer`(よく BER と略されます)は、[静的なベイク済みモデル][model]（JSON、OBJ など）では表現できない方法で [Block][block] を描画するために使います。たとえば、チェストのような Block で、コンテナの中身を動的に描画するのに使えます。BlockEntityRenderer を使うには、その Block が [`BlockEntity`][blockentity] を持っている必要があります。Block が他にデータを何も保存しない場合でも同様です。
+`BlockEntityRenderer`( よく BER と略されます )は、[静的なベイク済みモデル][model]（ JSON、OBJ など ）では表現できない方法で [Block][block] を描画するために使います。たとえば、チェストのような Block で、コンテナの中身を動的に描画するのに使えます。BlockEntityRenderer を使うには、その Block が [`BlockEntity`][blockentity] を持っている必要があります。Block が他にデータを何も保存しない場合でも同様です。
 
 BER を作るには、`BlockEntityRenderer` を継承したクラスを作成します。このクラスは、Block の `BlockEntity` クラスを指定するジェネリクスの型引数を取り、それが BER の `render` メソッドの引数の型として使われます。
 
@@ -62,7 +62,7 @@ public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderer
 
 ## `BlockEntityWithoutLevelRenderer`
 
-`BlockEntityWithoutLevelRenderer`(通称 BEWLR)は、通常の `BlockEntityRenderer` を特殊な [Item][item] の描画向けにしたものです(Item にはレベルのコンテキストがないため、「without level」という名前になっています)。全体的な目的は同じで、静的なモデルでは不十分な場合に特殊な描画を行うことです。
+`BlockEntityWithoutLevelRenderer`( 通称 BEWLR )は、通常の `BlockEntityRenderer` を特殊な [Item][item] の描画向けにしたものです( Item にはレベルのコンテキストがないため、「without level」という名前になっています )。全体的な目的は同じで、静的なモデルでは不十分な場合に特殊な描画を行うことです。
 
 BEWLR を追加するには、`BlockEntityWithoutLevelRenderer` を継承し、`#renderByItem` をオーバーライドしたクラスを作成します。コンストラクタでも追加の準備が必要です。
 

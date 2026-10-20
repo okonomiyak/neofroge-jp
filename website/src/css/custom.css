@@ -1,0 +1,20 @@
+/* ハイライト行(//highlight-next-line など)の背景色。原文サイトの値に合わせる */
+:root {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.125);
+}
+
+html[data-theme="dark"] {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.45);
+}
+
+/* ナビバーの対象バージョン表示 */
+.version-badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}

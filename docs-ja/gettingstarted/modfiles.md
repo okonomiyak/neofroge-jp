@@ -24,13 +24,13 @@ Mod ファイルは、JAR にどの Mod を含めるか、「Mods」メニュー
 | `mod_version`             | Mod のバージョン。Mod 一覧に表示されます。詳しくは[バージョンのページ][versioning]を参照してください。                                                                                                                          | `mod_version=1.0`                          |
 | `mod_group_id`            | [Group ID][group] を参照してください。                                                                                                                                                                                                              | `mod_group_id=com.example.examplemod`      |
 | `mod_authors`             | Mod の作者。Mod 一覧に表示されます。                                                                                                                                                                                          | `mod_authors=ExampleModder`                |
-| `mod_description`         | Mod の説明。複数行の文字列で、Mod 一覧に表示されます。改行文字(`\n`)を使うことができ、正しく置き換えられます。                                                                                          | `mod_description=Example mod description.` |
+| `mod_description`         | Mod の説明。複数行の文字列で、Mod 一覧に表示されます。改行文字( `\n` )を使うことができ、正しく置き換えられます。                                                                                          | `mod_description=Example mod description.` |
 
 ### Mod ID {#the-mod-id}
 
 Mod ID は、Mod を他の Mod と区別するための主な手段です。Mod の [Registry][registration] の名前空間や、[リソースパックとデータパック][resource]の名前空間など、さまざまな場所で使われます。同じ ID の Mod が 2 つあると、ゲームを読み込めなくなります。
 
-そのため、Mod ID は一意で覚えやすいものにしてください。通常は Mod の表示名(を小文字にしたもの)か、その変形を使います。Mod ID に使えるのは小文字の英字、数字、アンダースコアのみで、長さは 2 文字以上 64 文字以下である必要があります。
+そのため、Mod ID は一意で覚えやすいものにしてください。通常は Mod の表示名( を小文字にしたもの )か、その変形を使います。Mod ID に使えるのは小文字の英字、数字、アンダースコアのみで、長さは 2 文字以上 64 文字以下である必要があります。
 
 :::info
 `gradle.properties` ファイルでこのプロパティを変更すると、メイン Mod クラスの [`@Mod` アノテーション][javafml]を除くすべての場所に自動で反映されます。アノテーションの値は、`gradle.properties` ファイルの値と一致するよう手動で変更する必要があります。
@@ -47,7 +47,7 @@ Group ID には、トップレベルパッケージを設定してください�
 mod_group_id=com.example
 ```
 
-Java ソース(`src/main/java`)内のパッケージも、この構成に合わせます。内側のパッケージは Mod ID を表します。
+Java ソース( `src/main/java` )内のパッケージも、この構成に合わせます。内側のパッケージは Mod ID を表します。
 
 ```text
 com
@@ -78,13 +78,13 @@ Mod 固有でないプロパティは JAR 自体に関連するプロパティ�
 | `showAsResourcePack` | boolean  | `false`        | `true` の場合、Mod のリソースは「Mod Resources」パックにまとめられず、「Resource Packs」メニューに別のリソースパックとして表示されます。                                                                                                                                                                           | `showAsResourcePack=true`                                                      |
 | `showAsDataPack`     | boolean  | `false`        | `true` の場合、Mod のデータファイルは「Mod Data」パックにまとめられず、「Data Packs」メニューに別のデータパックとして表示されます。                                                                                                                                                                           | `showAsDataPack=true`                                                          |
 | `services`           | array    | `[]`           | Mod が使うサービスの配列。NeoForge による Java Platform Module System の実装において、Mod 用に作成されるモジュールの一部として使われます。                                                                                                                                                                                   | `services=["net.neoforged.neoforgespi.language.IModLanguageProvider"]`         |
-| `properties`         | table    | `{}`           | 置換プロパティのテーブル。`StringSubstitutor` が `${file.<key>}` を対応する値に置き換えるために使います。                                                                                                                                                                                                                    | `properties={"example"="1.2.3"}`(`${file.example}` で参照できます) |
+| `properties`         | table    | `{}`           | 置換プロパティのテーブル。`StringSubstitutor` が `${file.<key>}` を対応する値に置き換えるために使います。                                                                                                                                                                                                                    | `properties={"example"="1.2.3"}`( `${file.example}` で参照できます ) |
 | `issueTrackerURL`    | string   | _なし_      | Mod の問題を報告・追跡する場所を示す URL。                                                                                                                                                                                                                                                                            | `"https://github.com/neoforged/NeoForge/issues"`                               |
 
 :::note
 `services` プロパティは、[モジュールで `uses` ディレクティブ][uses]を指定するのと機能的に同等で、[特定の型のサービスを読み込む][serviceload]ことができます。
 
-または、`src/main/resources/META-INF/services` フォルダ内のサービスファイルで定義することもできます。ファイル名はサービスの完全修飾名、ファイルの内容は読み込むサービスの名前にします([AtlasViewer Mod のこの例][atlasviewer]も参照してください)。
+または、`src/main/resources/META-INF/services` フォルダ内のサービスファイルで定義することもできます。ファイル名はサービスの完全修飾名、ファイルの内容は読み込むサービスの名前にします( [AtlasViewer Mod のこの例][atlasviewer]も参照してください )。
 :::
 
 ### Mod 固有のプロパティ {#mod-specific-properties}
@@ -105,11 +105,11 @@ modId = "examplemod2"
 |------------------|----------|------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
 | `modId`          | string   | **必須**                | [Mod ID][modid] を参照してください。                                                                                                                                                                                                                                                       | `modId="examplemod"`                                            |
 | `namespace`      | string   | `modId` の値             | Mod の名前空間を上書きします。有効な [Mod ID][modid] である必要がありますが、ドットやハイフンも使えます。現在は使われていません。                                                                                                                                        | `namespace="example"`                                           |
-| `version`        | string   | `"1"`                        | Mod のバージョン。[Maven のバージョン規則の変形][versioning]を使うことが望まれます。`${file.jarVersion}` を設定すると、JAR のマニフェストにある `Implementation-Version` プロパティの値に置き換えられます(開発環境では `0.0NONE` と表示されます)。 | `version="1.20.2-1.0.0"`                                        |
-| `displayName`    | string   | `modId` の値             | Mod の表示名。画面上で Mod を表すとき(Mod 一覧、Mod の不一致など)に使われます。                                                                                                                                                                        | `displayName="Example Mod"`                                     |
+| `version`        | string   | `"1"`                        | Mod のバージョン。[Maven のバージョン規則の変形][versioning]を使うことが望まれます。`${file.jarVersion}` を設定すると、JAR のマニフェストにある `Implementation-Version` プロパティの値に置き換えられます( 開発環境では `0.0NONE` と表示されます )。 | `version="1.20.2-1.0.0"`                                        |
+| `displayName`    | string   | `modId` の値             | Mod の表示名。画面上で Mod を表すとき( Mod 一覧、Mod の不一致など )に使われます。                                                                                                                                                                        | `displayName="Example Mod"`                                     |
 | `description`    | string   | `'''MISSING DESCRIPTION'''`  | Mod 一覧画面に表示される Mod の説明。[複数行リテラル文字列][multiline]の使用をおすすめします。この値は翻訳することもできます。詳しくは [Mod メタデータの翻訳][i18n]を参照してください。                                                                | `description='''This is an example.'''`                         |
-| `logoFile`       | string   | _なし_                    | Mod 一覧画面で使われる画像ファイルの名前と拡張子。ロゴは JAR のルート、またはソースセットのルート直下(メインのソースセットなら `src/main/resources`)に置く必要があります。                                                                   | `logoFile="example_logo.png"`                                   |
-| `logoBlur`       | boolean  | `true`                       | `logoFile` の描画に `GL_LINEAR*`(true)と `GL_NEAREST*`(false)のどちらを使うか。簡単に言えば、ロゴを拡大縮小するときにぼかすかどうかです。                                                                                    | `logoBlur=false`                                                |
+| `logoFile`       | string   | _なし_                    | Mod 一覧画面で使われる画像ファイルの名前と拡張子。ロゴは JAR のルート、またはソースセットのルート直下( メインのソースセットなら `src/main/resources` )に置く必要があります。                                                                   | `logoFile="example_logo.png"`                                   |
+| `logoBlur`       | boolean  | `true`                       | `logoFile` の描画に `GL_LINEAR*`( true )と `GL_NEAREST*`( false )のどちらを使うか。簡単に言えば、ロゴを拡大縮小するときにぼかすかどうかです。                                                                                    | `logoBlur=false`                                                |
 | `updateJSONURL`  | string   | _なし_                    | [アップデートチェッカー][update]が、プレイ中の Mod が最新バージョンかを確認するために使う JSON の URL。                                                                                                                                                               | `updateJSONURL="https://example.github.io/update_checker.json"` |
 | `modUrl`         | string   | _なし_                    | Mod のダウンロードページの URL。現在は使われていません。                                                                                                                                                                                                                       | `modUrl="https://neoforged.net/"`                               |
 | `credits`        | string   | _なし_                    | Mod 一覧画面に表示される、Mod のクレジットと謝辞。                                                                                                                                                                                                             | `credits="The person over here and there."`                     |
@@ -185,8 +185,8 @@ Mod は依存関係を指定でき、NeoForge は Mod を読み込む前にそ�
 | `modId`        | string  | **必須**  | 依存関係として追加する Mod の識別子。                                                                                                                                                                                                                                                                                                                                                                                                                           | `modId="jei"`                                |
 | `type`         | string  | `"required"`   | 依存関係の性質を指定します。`"required"` はデフォルトで、依存先がない場合は Mod を読み込みません。`"optional"` は依存先がなくても Mod の読み込みを妨げませんが、依存先の互換性は検証します。`"incompatible"` は依存先が存在する場合に Mod を読み込みません。`"discouraged"` は依存先が存在しても Mod の読み込みを許可しますが、ユーザーに警告を表示します。 | `type="incompatible"`                        |
 | `reason`       | string  | _なし_      | この依存関係が必要な理由、または互換性がない理由を説明する、ユーザー向けの任意のメッセージ。                                                                                                                                                                                                                                                                                                                                                                    | `reason="integration"`                       |
-| `versionRange` | string  | `""`           | 言語ローダーの許容バージョン範囲。[Maven のバージョン範囲][mvr]の形式で指定します。空文字列はすべてのバージョンに一致します。(訳注: 原文は「言語ローダー」ですが、文脈上は依存先 Mod のバージョン範囲を指すと思われます)                                                                                                                                                                                                                                                                                                                                       | `versionRange="[1, 2)"`                      |
-| `ordering`     | string  | `"NONE"`       | Mod をこの依存先より前(`"BEFORE"`)に読み込むか、後(`"AFTER"`)に読み込むかを定義します。順序が問題にならない場合は `"NONE"` を返します。                                                                                                                                                                                                                                                                                                                                    | `ordering="AFTER"`                           |
+| `versionRange` | string  | `""`           | 言語ローダーの許容バージョン範囲。[Maven のバージョン範囲][mvr]の形式で指定します。空文字列はすべてのバージョンに一致します。( 訳注: 原文は「言語ローダー」ですが、文脈上は依存先 Mod のバージョン範囲を指すと思われます )                                                                                                                                                                                                                                                                                                                                       | `versionRange="[1, 2)"`                      |
+| `ordering`     | string  | `"NONE"`       | Mod をこの依存先より前( `"BEFORE"` )に読み込むか、後( `"AFTER"` )に読み込むかを定義します。順序が問題にならない場合は `"NONE"` を返します。                                                                                                                                                                                                                                                                                                                                    | `ordering="AFTER"`                           |
 | `side`         | string  | `"BOTH"`       | 依存先が存在している必要がある[物理 Side][sides]。`"CLIENT"`、`"SERVER"`、`"BOTH"` のいずれかです。                                                                                                                                                                                                                                                                                                                                                                         | `side="CLIENT"`                              |
 | `referralUrl`  | string  | _なし_      | 依存先のダウンロードページの URL。現在は使われていません。                                                                                                                                                                                                                                                                                                                                                                                                            | `referralUrl="https://library.example.com/"` |
 
@@ -200,13 +200,13 @@ Mod は依存関係を指定でき、NeoForge は Mod を読み込む前にそ�
 
 ### `javafml` と `@Mod` {#javafml-and-mod}
 
-`javafml` は、NeoForge が提供する Java プログラミング言語用の言語ローダーです。エントリポイントは、`@Mod` アノテーションを付けた public クラスで定義します。`@Mod` の値には、`neoforge.mods.toml` で指定した Mod ID のいずれかを含める必要があります。そのうえで、すべての初期化ロジック(例: [Event の登録][events]や [`DeferredRegister` の追加][registration])をクラスのコンストラクタ内に記述できます。
+`javafml` は、NeoForge が提供する Java プログラミング言語用の言語ローダーです。エントリポイントは、`@Mod` アノテーションを付けた public クラスで定義します。`@Mod` の値には、`neoforge.mods.toml` で指定した Mod ID のいずれかを含める必要があります。そのうえで、すべての初期化ロジック( 例: [Event の登録][events]や [`DeferredRegister` の追加][registration] )をクラスのコンストラクタ内に記述できます。
 
 メイン Mod クラスの public コンストラクタは 1 つだけにする必要があります。そうでない場合は `RuntimeException` がスローされます。コンストラクタは、以下の引数を**任意の**順序で**いくつでも**受け取れます。どれも必須ではありません。ただし、同じ引数を重複させることはできません。
 
 引数の型     | 説明                                                                                              |
 ------------------|----------------------------------------------------------------------------------------------------------|
-`IEventBus`       | [Mod 固有の EventBus][modbus]（登録や Event などに必要）                             |
+`IEventBus`       | [Mod 固有の EventBus][modbus]（ 登録や Event などに必要 ）                             |
 `ModContainer`    | この Mod のメタデータを保持する抽象コンテナ                                                       |
 `FMLModContainer` | `javafml` が定義する、この Mod のメタデータを保持する実際のコンテナ。`ModContainer` を拡張したもの |
 `Dist`            | この Mod が読み込まれている[物理 Side][sides]                                                        |

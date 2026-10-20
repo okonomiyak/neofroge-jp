@@ -3,7 +3,7 @@
 BlockEntity を使うと、[ブロックステート][blockstate]が適さない場合に、[Block][block] にデータを保存できます。特に、インベントリのように取りうる値が有限でないデータの場合です。BlockEntity は静止していて Block に結び付いていますが、それ以外の点ではエンティティと多くの共通点があります。名前の由来はそこです。
 
 :::note
-Block が取りうる状態の数が有限でそれなりに少ない(多くても数百程度)なら、代わりに[ブロックステート][blockstate]を使うことを検討してください。
+Block が取りうる状態の数が有限でそれなりに少ない( 多くても数百程度 )なら、代わりに[ブロックステート][blockstate]を使うことを検討してください。
 :::
 
 ## BlockEntity の作成と登録 {#creating-and-registering-block-entities}
@@ -123,11 +123,11 @@ public class MyBlockEntity extends BlockEntity {
 
 どちらのメソッドでも、super を呼び出すことが重要です。位置などの基本的な情報がそこで追加されるためです。タグ名 `id`、`x`、`y`、`z`、`NeoForgeData`、`neoforge:attachments` は親メソッドで予約されているため、自分で使わないでください。
 
-もちろん、デフォルト値で扱うだけでなく、他の値も設定したくなるでしょう。他のフィールドと同じように、自由に設定できます。ただし、ゲームにその変更を保存させたい場合は、その後で `#setChanged()` を呼び出す必要があります。これにより、BlockEntity のチャンクがダーティ(保存が必要な状態)としてマークされます。このメソッドを呼ばないと、保存時にその BlockEntity が飛ばされることがあります。Minecraft の保存システムは、ダーティとマークされたチャンクしか保存しないためです。
+もちろん、デフォルト値で扱うだけでなく、他の値も設定したくなるでしょう。他のフィールドと同じように、自由に設定できます。ただし、ゲームにその変更を保存させたい場合は、その後で `#setChanged()` を呼び出す必要があります。これにより、BlockEntity のチャンクがダーティ( 保存が必要な状態 )としてマークされます。このメソッドを呼ばないと、保存時にその BlockEntity が飛ばされることがあります。Minecraft の保存システムは、ダーティとマークされたチャンクしか保存しないためです。
 
 ## ティッカー {#tickers}
 
-BlockEntity のもう一つのよくある使い方は、保存したデータと組み合わせることの多い tick 処理です。tick 処理とは、ゲームの tick ごとに何らかのコードを実行することです。これは、`EntityBlock#getTicker` をオーバーライドして、`BlockEntityTicker` を返すことで行います。これは基本的に、4 つの引数(レベル、位置、ブロックステート、BlockEntity)を取る Consumer です。
+BlockEntity のもう一つのよくある使い方は、保存したデータと組み合わせることの多い tick 処理です。tick 処理とは、ゲームの tick ごとに何らかのコードを実行することです。これは、`EntityBlock#getTicker` をオーバーライドして、`BlockEntityTicker` を返すことで行います。これは基本的に、4 つの引数( レベル、位置、ブロックステート、BlockEntity )を取る Consumer です。
 
 ```java
 // Note: The ticker is defined in the block, not the block entity. However, it is good practice to
@@ -171,7 +171,7 @@ BlockEntity のロジックは、通常サーバーで実行されます。そ�
 
 ### チャンク読み込み時の同期 {#syncing-on-chunk-load}
 
-チャンクは、ネットワークまたはディスクから読み取られるたびに読み込まれます(そして、この方法が使われます)。ここでデータを送るには、次のメソッドをオーバーライドする必要があります。
+チャンクは、ネットワークまたはディスクから読み取られるたびに読み込まれます( そして、この方法が使われます )。ここでデータを送るには、次のメソッドをオーバーライドする必要があります。
 
 ```java
 public class MyBlockEntity extends BlockEntity {
