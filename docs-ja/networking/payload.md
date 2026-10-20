@@ -92,7 +92,7 @@ public class ClientPayloadHandler {
 - ペイロードの処理メソッドは、デフォルトでメインスレッドで呼び出されます。
 
 
-リソースを多く使う計算が必要な場合は、メインスレッドを止めるのではなく、ネットワークスレッドで処理してください。これには、ペイロードを登録する前に、`PayloadRegistrar#executesOn` で `PayloadRegistrar` の `HandlerThread` を `HandlerThread#NETWORK` に設定します。
+リソースを多く使う計算が必要な場合は、メインスレッドをブロックするのではなく、ネットワークスレッドで処理してください。これには、ペイロードを登録する前に、`PayloadRegistrar#executesOn` で `PayloadRegistrar` の `HandlerThread` を `HandlerThread#NETWORK` に設定します。
 
 ```java
 @SubscribeEvent // on the mod event bus

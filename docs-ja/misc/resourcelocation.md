@@ -1,4 +1,4 @@
-# ResourceLocation {#resource-locations}
+# リソースロケーション {#resource-locations}
 
 `ResourceLocation` は、Minecraft で最も重要なものの一つです。[Registry][registries] のキー、データファイルやリソースファイルの識別子、コード内でのモデルの参照など、多くの場所で使われます。`ResourceLocation` は、`:` で区切られた名前空間とパスの 2 つの部分からなります。
 

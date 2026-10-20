@@ -57,7 +57,7 @@ new KeyMapping(
 
 各競合コンテキストには 2 つのメソッドがあります。現在のゲームの状態でその割り当てを使えるかを定義する `#isActive` と、同じまたは異なる競合コンテキストのキーと競合するかを定義する `#conflicts` です。
 
-現在、NeoForge は `KeyConflictContext` で 3 つの基本的なコンテキストを定義しています。デフォルトで、どの場面でもキーを使えることを意味する `UNIVERSAL`、`Screen` が開いているときだけ割り当てを使えることを意味する `GUI`、`Screen` が開いていないときだけ割り当てを使えることを意味する `IN_GAME` です。新しい競合コンテキストは、`IKeyConflictContext` を実装して作成できます。
+現在、NeoForge は `KeyConflictContext` で 3 つの基本的なコンテキストを定義しています。デフォルトであり、どの場面でもキーを使えることを意味する `UNIVERSAL`、`Screen` が開いているときだけ割り当てを使えることを意味する `GUI`、`Screen` が開いていないときだけ割り当てを使えることを意味する `IN_GAME` です。新しい競合コンテキストは、`IKeyConflictContext` を実装して作成できます。
 
 ```java
 new KeyMapping(
