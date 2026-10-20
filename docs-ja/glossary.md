@@ -275,3 +275,9 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | number provider | 数値プロバイダ |
 | loot parameter / loot context / loot context param set | ルートパラメータ / ルートコンテキスト / ルートコンテキストのパラメータセット |
 | global loot modifier ( GLM ) | グローバルルートモディファイア( GLM ) |
+| recipe / recipe type / recipe serializer / recipe input | レシピ / レシピタイプ / レシピシリアライザ / レシピの入力 |
+| ingredient | 材料 |
+| shaped / shapeless crafting | 定形クラフト / 不定形クラフト |
+| recipe factory / recipe builder | レシピファクトリ / レシピビルダー |
+| predicate ( Minecraft Wiki ) | プレディケート |
+| item modifier | アイテムモディファイア |

@@ -60,3 +60,8 @@
 - resources/server/loottables/index.md
 - resources/server/loottables/custom.md
 - resources/server/loottables/glm.md
+- resources/server/loottables/lootconditions.md
+- resources/server/loottables/lootfunctions.md
+- resources/server/recipes/index.md
+- resources/server/recipes/builtin.md
+- resources/server/recipes/ingredients.md
