@@ -270,3 +270,8 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | enchantability | エンチャント適性 |
 | value effect / location based effect / entity effect | 値の効果 / 位置に基づく効果 / エンティティの効果 |
 | enchantment names | 日本語版 Minecraft の名称に合わせる( 例: Sharpness → ダメージ増加、Mending → 修繕 ) |
+| loot table / loot pool / loot entry | ルートテーブル / ルートプール / ルートエントリ |
+| loot condition / loot function | ルート条件 / ルート関数 |
+| number provider | 数値プロバイダ |
+| loot parameter / loot context / loot context param set | ルートパラメータ / ルートコンテキスト / ルートコンテキストのパラメータセット |
+| global loot modifier ( GLM ) | グローバルルートモディファイア( GLM ) |

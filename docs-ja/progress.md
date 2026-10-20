@@ -57,3 +57,6 @@
 - resources/server/datamaps/builtin.md
 - resources/server/enchantments/index.md
 - resources/server/enchantments/builtin.md
+- resources/server/loottables/index.md
+- resources/server/loottables/custom.md
+- resources/server/loottables/glm.md
