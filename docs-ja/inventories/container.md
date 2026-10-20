@@ -12,7 +12,7 @@ sidebar_position: 1
 :::warning
 NeoForge は、多くの場所で `Container` の代わりとなる `ItemStackHandler` クラスを提供しています。他の `Container` や `ItemStackHandler` とのやりとりをすっきり書けるため、できる限り `Container` ではなくこちらを使ってください。
 
-この記事は主に、バニラのコードを読むときの参考や、複数のローダー向けに Mod を開発する場合のためにあります。自分のコードでは、できる限り常に `ItemStackHandler` を使ってください!それについてのドキュメントは現在執筆中です。
+この記事は主に、バニラのコードを読むときの参考や、複数のローダー向けに Mod を開発する場合のためにあります。自分のコードでは、できる限り常に `ItemStackHandler` を使ってください！それについてのドキュメントは現在執筆中です。
 :::
 
 ## 基本的なコンテナの実装 {#basic-container-implementation}
@@ -198,7 +198,7 @@ public class MyBlockEntity extends BaseContainerBlockEntity implements WorldlyCo
 
 ## コンテナの使用 {#using-containers}
 
-コンテナを作ったので、使ってみましょう!
+コンテナを作ったので、使ってみましょう！
 
 `Container` と `BlockEntity` には重なる部分がかなり多いため、可能であれば、BlockEntity を `Container` にキャストしてコンテナを取得するのが最善です。
 
@@ -259,7 +259,7 @@ public class MyBackpackContainer extends SimpleContainer {
 }
 ```
 
-これで、アイテムに紐づいたコンテナができました!メニューなどの用途でコンテナを作るには、`new MyBackpackContainer(stack)` を呼び出します。
+これで、アイテムに紐づいたコンテナができました！メニューなどの用途でコンテナを作るには、`new MyBackpackContainer(stack)` を呼び出します。
 
 :::warning
 `Container` と直接やりとりする `Menu` では、`ItemStack` を変更するときに `#copy()` する必要がある点に注意してください。そうしないと、データコンポーネントのイミュータブルであるという約束が破られます。そのために、NeoForge は `StackCopySlot` クラスを提供しています。

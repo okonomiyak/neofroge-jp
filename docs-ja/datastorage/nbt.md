@@ -9,7 +9,7 @@ NBT は、Minecraft のごく初期に Notch 自身が作ったフォーマッ�
 
 NBT の仕様は JSON の仕様と似ていますが、いくつか違いがあります。
 
-- byte、short、long、float にはそれぞれ別の型があり、Java のコードでの書き方と同様に、それぞれ `b`、`s`、`l`、`f` の接尾辞を付けます。
+- byte、short、long、float にはそれぞれ専用の型があり、Java のコードでの書き方と同様に、`b`、`s`、`l`、`f` の接尾辞を付けます。
     - double にも `d` の接尾辞を付けられますが、Java のコードと同様に必須ではありません。Java で整数に使える省略可能な `i` の接尾辞は使えません。
     - 接尾辞は大文字と小文字を区別しません。たとえば、`64b` と `64B`、`0.5F` と `0.5f` はそれぞれ同じです。
 - 真偽値は存在せず、代わりに byte で表します。`true` は `1b`、`false` は `0b` になります。
@@ -68,7 +68,7 @@ boolean hasColorMoreExplicitly = tag.contains("Color", Tag.TAG_INT);
 
 `TAG_INT` 定数は、すべてのタグ型の親インターフェースである `Tag` で定義されています。`CompoundTag` 以外のタグ型( たとえば `ByteTag` や `StringTag` )の多くはほぼ内部向けのものですが、もし出くわした場合は、`CompoundTag#get` と `#put` のメソッドで直接扱えます。
 
-ただし、明らかな例外が 1 つあります。`ListTag` です。これの扱いは特殊で、`CompoundTag#getList` でリストタグを取得するときに、リストの型も指定する必要があります。たとえば、文字列のリストを取得するには次のようにします。
+ただし、明らかな例外が 1 つあります。`ListTag` です。これは扱いが特殊で、`CompoundTag#getList` でリストタグを取得するときに、リストの型も指定する必要があります。たとえば、文字列のリストを取得するには次のようにします。
 
 ```java
 ListTag list = tag.getList("SomeListHere", Tag.TAG_STRING);
