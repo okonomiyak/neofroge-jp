@@ -251,7 +251,7 @@ while (leftClickIsBeingHeld()) {
 
 #### 「採掘」段階 {#the-mining-stage}
 
-- `PlayerInteractEvent.LeftClickBlock` が発火されます。Event がキャンセルされると、パイプラインは「終了」段階に移ります。
+- `PlayerInteractEvent.LeftClickBlock` が発火されます。Event がキャンセルされると、パイプラインは「後処理」段階に移ります。(訳注: 原文では「後処理」(finishing)段階の内容は説明されていません。すぐに止まる「パイプラインは終了します」とは区別されています)
     - クライアントで Event をキャンセルすると、パケットがサーバーに送られないため、サーバー側のロジックは何も実行されない点に注意してください。
     - 一方、サーバーでこの Event をキャンセルしてもクライアントのコードは実行されるため、非同期の原因になることがあります!
 - `Block#getDestroyProgress` が呼ばれ、その値が内部の破壊進行度カウンターに加算されます。
@@ -261,14 +261,14 @@ while (leftClickIsBeingHeld()) {
 
 #### 「実際の破壊」段階 {#the-actually-breaking-stage}
 
-- `Item#canAttackBlock` が呼ばれます。`false` を返す(Block を壊すべきでないと判断した)と、パイプラインは「終了」段階に移ります。
-- Block が `GameMasterBlock` のインスタンスの場合、`Player#canUseGameMasterBlocks` が呼ばれます。これは、プレイヤーがクリエイティブ専用の Block を破壊できるかどうかを判定します。`false` の場合、パイプラインは「終了」段階に移ります。
-- サーバーのみ: `Player#blockActionRestricted` が呼ばれます。これは、現在のプレイヤーがその Block を壊せないかどうかを判定します。`true` の場合、パイプラインは「終了」段階に移ります。
-- サーバーのみ: `BlockEvent.BreakEvent` が発火されます。キャンセルされた場合、または `getExpToDrop` が -1 を返した場合、パイプラインは「終了」段階に移ります。キャンセル状態の初期値は、上記の 3 つのメソッドによって決まります。
+- `Item#canAttackBlock` が呼ばれます。`false` を返す(Block を壊すべきでないと判断した)と、パイプラインは「後処理」段階に移ります。
+- Block が `GameMasterBlock` のインスタンスの場合、`Player#canUseGameMasterBlocks` が呼ばれます。これは、プレイヤーがクリエイティブ専用の Block を破壊できるかどうかを判定します。`false` の場合、パイプラインは「後処理」段階に移ります。
+- サーバーのみ: `Player#blockActionRestricted` が呼ばれます。これは、現在のプレイヤーがその Block を壊せないかどうかを判定します。`true` の場合、パイプラインは「後処理」段階に移ります。
+- サーバーのみ: `BlockEvent.BreakEvent` が発火されます。キャンセルされた場合、または `getExpToDrop` が -1 を返した場合、パイプラインは「後処理」段階に移ります。キャンセル状態の初期値は、上記の 3 つのメソッドによって決まります。
     - サーバーのみ: `PlayerEvent.HarvestCheck` が発火されます。`HarvestCheck#canHarvest` が `false` を返すか、破壊 Event に渡された `BlockState` が null の場合、Event の経験値の初期値は 0 になります。
     - サーバーのみ: `PlayerEvent.HarvestCheck#canHarvest` が `true` を返した場合、`IBlockExtension#getExpDrop` が呼ばれます。この値は `BlockEvent.BreakEvent#getExpToDrop` に渡され、パイプラインの後の段階で使われます。
 - サーバーのみ: `IBlockExtension#canHarvestBlock` が呼ばれます。これは、Block を収穫できる、つまりドロップ付きで壊せるかどうかを判定します。
-- `IBlockExtension#onDestroyedByPlayer` が呼ばれます。`false` を返すと、パイプラインは「終了」段階に移ります。その `IBlockExtension#onDestroyedByPlayer` の呼び出しの中では、次の処理が行われます。
+- `IBlockExtension#onDestroyedByPlayer` が呼ばれます。`false` を返すと、パイプラインは「後処理」段階に移ります。その `IBlockExtension#onDestroyedByPlayer` の呼び出しの中では、次の処理が行われます。
     - `Block#playerWillDestroy` が呼ばれます。
     - ブロックステートの引数に `Blocks.AIR.defaultBlockState()` を渡した `Level#setBlock` の呼び出しによって、ブロックステートがレベルから取り除かれます。
         - その `Level#setBlock` の呼び出しの中で、`Block#onRemove` が呼ばれます。
