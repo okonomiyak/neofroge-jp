@@ -34,7 +34,9 @@ const config = {
           editUrl: 'https://github.com/okonomiyak/neofroge-jp/edit/main/',
         },
         blog: false,
-        theme: {},
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
       }),
     ],
   ],

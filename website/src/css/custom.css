@@ -1,0 +1,8 @@
+/* ハイライト行(//highlight-next-line など)の背景色。原文サイトの値に合わせる */
+:root {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.125);
+}
+
+html[data-theme="dark"] {
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.45);
+}
