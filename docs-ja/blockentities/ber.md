@@ -112,7 +112,7 @@ public static void registerClientExtensions(RegisterClientExtensionsEvent event)
 ```
 
 :::info
-`IClientItemExtensions` は、一般にシングルトンとして扱うことが想定されています。`RegisterClientExtensionsEvent` の外で構築しないでください!
+`IClientItemExtensions` は、一般にシングルトンとして扱うことが想定されています。`RegisterClientExtensionsEvent` の外で構築しないでください！
 :::
 
 [block]: ../blocks/index.md

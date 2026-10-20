@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 
 # Event {#events}
 
-NeoForge の主な機能の一つが Event システムです。Event は、ゲーム内で起きるさまざまな出来事に対して発火されます。たとえば、プレイヤーが右クリックしたとき、プレイヤーや他のエンティティがジャンプしたとき、ブロックが描画されるとき、ゲームが読み込まれたときなどの Event があります。Mod 開発者はこれらの Event それぞれに Event ハンドラを登録し、その中で目的の処理を行えます。
+NeoForge の主な機能の一つが Event システムです。Event は、ゲーム内で起きるさまざまな出来事に対して発火されます。たとえば、プレイヤーが右クリックしたとき、プレイヤーや他のエンティティがジャンプしたとき、Block が描画されるとき、ゲームが読み込まれたときなどの Event があります。Mod 開発者はこれらの Event それぞれに Event ハンドラを登録し、その中で目的の処理を行えます。
 
 Event は、それぞれ対応する EventBus 上で発火されます。最も重要なバスは `NeoForge.EVENT_BUS` で、**ゲーム**バスとも呼ばれます。それとは別に、起動時には読み込まれた Mod ごとに Mod バスが作られ、Mod のコンストラクタに渡されます。Mod バスの Event の多くは並列に発火されるため( 常に同じスレッドで実行されるメインバスの Event とは異なります )、起動速度が大幅に向上します。詳しくは[後述][modbus]を参照してください。
 
@@ -38,7 +38,7 @@ public class YourMod {
 
 ### `@SubscribeEvent`
 
-別の方法として、アノテーション駆動という方法もあります。Event ハンドラのメソッドを作り、`@SubscribeEvent` アノテーションを付けます。そのうえで、そのメソッドを含むクラスのインスタンスを EventBus に渡すと、そのインスタンスにある `@SubscribeEvent` 付きの Event ハンドラがすべて登録されます。
+別の方法として、Event ハンドラをアノテーション駆動にすることもできます。Event ハンドラのメソッドを作り、`@SubscribeEvent` アノテーションを付けます。そのうえで、そのメソッドを含むクラスのインスタンスを EventBus に渡すと、そのインスタンスにある `@SubscribeEvent` 付きの Event ハンドラがすべて登録されます。
 
 ```java
 public class EventHandler {
@@ -118,7 +118,7 @@ public class EventHandler {
 
 ### 階層 {#hierarchy}
 
-継承の利点を活かすため、一部の Event は `Event` を直接継承せず、そのサブクラスのいずれかを継承しています。たとえば `BlockEvent`( ブロック関連の Event のためにブロックのコンテキストを持つ )や `EntityEvent`( 同様にエンティティのコンテキストを持つ )、そのサブクラスである `LivingEvent`( `LivingEntity` 固有のコンテキスト用 )や `PlayerEvent`( `Player` 固有のコンテキスト用 )などです。こうしたコンテキストを提供する親 Event は `abstract` であり、listen することはできません。
+継承の利点を活かすため、一部の Event は `Event` を直接継承せず、そのサブクラスのいずれかを継承しています。たとえば `BlockEvent`( Block 関連の Event のために Block のコンテキストを持つ )や `EntityEvent`( 同様にエンティティのコンテキストを持つ )、そのサブクラスである `LivingEvent`( `LivingEntity` 固有のコンテキスト用 )や `PlayerEvent`( `Player` 固有のコンテキスト用 )などです。こうしたコンテキストを提供する親 Event は `abstract` であり、listen することはできません。
 
 :::danger
 `abstract` な Event を listen するとゲームがクラッシュします。それが望ましい場面は決してないためです。必ず、そのサブ Event のいずれかを listen してください。

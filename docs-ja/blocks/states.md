@@ -23,7 +23,7 @@ minecraft:end_portal_frame[facing=west,eye=true]
 
 Block にブロックステートのプロパティが 1 つも定義されていなくても、ブロックステートはちょうど 1 つあります。指定するプロパティがないので、プロパティを持たないブロックステートです。これは `minecraft:oak_planks[]`、または単に `minecraft:oak_planks` と表せます。
 
-Block と同じく、すべての `BlockState` はメモリ上にちょうど 1 つだけ存在します。つまり、`BlockState` の比較には `==` を使うことができ、また使うべきです。`BlockState` は final クラスでもあるため、継承できません。**機能はすべて、対応する [Block][block] クラスに実装してください!**
+Block と同じく、すべての `BlockState` はメモリ上にちょうど 1 つだけ存在します。つまり、`BlockState` の比較には `==` を使うことができ、また使うべきです。`BlockState` は final クラスでもあるため、継承できません。**機能はすべて、対応する [Block][block] クラスに実装してください！**
 
 ## ブロックステートを使うべきとき {#when-to-use-blockstates}
 

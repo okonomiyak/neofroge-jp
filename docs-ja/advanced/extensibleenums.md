@@ -13,7 +13,7 @@
 
 ### enum のエントリの作成 {#creating-an-enum-entry}
 
-新しい enum のエントリを作るには、JSON ファイルを作成し、`neoforge.mods.toml` の `[[mods]]` ブロックの `enumExtensions` で参照する必要があります。指定するパスは、`resources` ディレクトリからの相対パスにしてください。
+新しい enum のエントリを作るには、JSON ファイルを作成し、`neoforge.mods.toml` の `[[mods]]` ブロックの `enumExtensions` で参照する必要があります。指定するパスは、`resources` ディレクトリからの相対パスでなければなりません。
 ```toml
 # In neoforge.mods.toml:
 [[mods]]
@@ -79,7 +79,7 @@ public class MyEnumParams {
 
 #### コンストラクタ {#constructor}
 
-コンストラクタは[メソッドディスクリプタ][jvmdescriptors]として指定する必要があり、ソースコード上で見える引数だけを含めてください。隠れた引数である定数名と序数は省きます。  
+コンストラクタは[メソッドディスクリプタ][jvmdescriptors]として指定する必要があり、ソースコード上で見える引数だけを含める必要があります。隠れた引数である定数名と序数は省きます。  
 コンストラクタに `@ReservedConstructor` アノテーションが付いている場合、そのコンストラクタは Mod の enum 定数には使えません。
 
 #### 引数 {#parameters}
@@ -118,7 +118,7 @@ enum の具体的な内容に応じて、さらに次の対応が必要です。
 - enum に、シリアライズに使われるため名前空間を付けるべき文字列の名前の引数がある場合は、enum に `@NamedEnum` アノテーションを付けてください。名前が最初の引数でなければ、アノテーションの値に名前の引数のインデックスを指定します
 - enum がネットワーク経由で送られる場合は、`@NetworkedEnum` アノテーションを付け、その引数で値を送る方向( クライアント向け、サーバー向け、双方向 )を指定してください
     - 警告: NeoForge に enum のネットワークチェックが実装されると、ネットワークで送られる enum には追加の手順が必要になります
-- enum に Mod が使えないコンストラクタがある場合( たとえば、Mod の登録より前に初期化されうる enum で、Registry のオブジェクトを必要とするため )は、そのコンストラクタに `@ReservedConstructor` アノテーションを付けてください
+- enum に Mod が使えないコンストラクタがある場合( つまり、Mod の登録より前に初期化されうる enum で、Registry のオブジェクトを必要とするため )は、そのコンストラクタに `@ReservedConstructor` アノテーションを付けてください
 
 :::note
 enum に実際にエントリが追加された場合、`getExtensionInfo` メソッドは実行時に変換され、動的に生成された `ExtensionInfo` を返すようになります。
