@@ -6,3 +6,6 @@
 - gettingstarted/modfiles.md
 - gettingstarted/structuring.md
 - gettingstarted/versioning.md
+- concepts/sides.md
+- concepts/events.md
+- concepts/registries.md

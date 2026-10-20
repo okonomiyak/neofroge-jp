@@ -66,3 +66,30 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | fully-qualified name | 完全修飾名 |
 | tooltip | ツールチップ |
 | crash | クラッシュする |
+| logical side / logical client / logical server | 論理 Side / 論理クライアント / 論理サーバー |
+| physical server | 物理サーバー |
+| render thread | レンダースレッド |
+| event handler | Event ハンドラ |
+| fire (an event) | (Event を)発火する |
+| post (an event on a bus) | (バスに)投稿する |
+| subscribe / listen to | 登録する / リッスンする |
+| game bus / mod bus / main bus | ゲームバス / Mod バス / メインバス |
+| mod event bus | Mod の EventBus |
+| lifecycle event | ライフサイクル Event |
+| cancellable event | キャンセル可能な Event |
+| priority | 優先度 |
+| sided | Side 別の |
+| registration | 登録 |
+| registry name / registry entry / registry key | Registry 名 / Registry エントリ / Registry キー |
+| root registry | ルート Registry |
+| custom registry | カスタム Registry |
+| datapack registry | Datapack Registry |
+| data provider | データプロバイダ |
+| query (a registry) | 問い合わせる |
+| vanilla | バニラ |
+| modded | Mod の |
+| level | レベル |
+| entity | エンティティ |
+| tick | tick |
+| desynchronization | 非同期 |
+| serialize / deserialize | シリアライズ / デシリアライズ |
