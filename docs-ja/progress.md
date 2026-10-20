@@ -45,3 +45,7 @@
 - resources/client/textures.md
 - resources/client/particles.md
 - resources/client/sounds.md
+- resources/client/models/index.md
+- resources/client/models/bakedmodel.md
+- resources/client/models/datagen.md
+- resources/client/models/modelloaders.md

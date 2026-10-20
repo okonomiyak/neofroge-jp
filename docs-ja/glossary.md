@@ -242,3 +242,18 @@ DeferredRegister, Registry, Event, EventBus, BlockEntity, Item, Block, Mixin, Ac
 | sound event / sound category / sound definition | サウンドイベント / サウンドカテゴリ / サウンド定義 |
 | attenuation | 減衰 |
 | merge | マージ |
+| model / item model / block model | モデル / アイテムモデル / ブロックモデル |
+| parent ( model ) | 親モデル |
+| element ( model ) | 要素 |
+| render type | 描画タイプ |
+| ambient occlusion | アンビエントオクルージョン |
+| mipmapping | ミップマップ |
+| tint / tint index / color handler | 着色 / 着色インデックス / カラーハンドラ |
+| override ( item model ) | オーバーライド |
+| root transform | ルート変換 |
+| perspective | 視点 |
+| quad | 四角形 |
+| baked model | ベイク済みモデル |
+| custom model loader | カスタムモデルローダー |
+| geometry | ジオメトリ |
+| composite model | 複合モデル |
